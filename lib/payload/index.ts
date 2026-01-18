@@ -1,0 +1,1 @@
+export { getPayloadClient } from './client'
