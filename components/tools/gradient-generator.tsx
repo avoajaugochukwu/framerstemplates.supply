@@ -14,7 +14,7 @@ interface GradientGeneratorProps {
   config?: unknown
 }
 
-export default function GradientGenerator({ config }: GradientGeneratorProps) {
+export default function GradientGenerator({ config: _config }: GradientGeneratorProps) {
   const [gradientType, setGradientType] = React.useState<'linear' | 'radial' | 'conic'>('linear')
   const [angle, setAngle] = React.useState(90)
   const [colorStops, setColorStops] = React.useState<ColorStop[]>([

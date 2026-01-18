@@ -55,7 +55,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   const draft = await draftMode()
   draft.disable()
   return new Response('Draft mode disabled', { status: 200 })

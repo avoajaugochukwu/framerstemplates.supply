@@ -37,7 +37,7 @@ function getContrastRatio(color1: string, color2: string) {
   return (lighter + 0.05) / (darker + 0.05)
 }
 
-export default function ContrastChecker({ config }: ContrastCheckerProps) {
+export default function ContrastChecker({ config: _config }: ContrastCheckerProps) {
   const [foreground, setForeground] = React.useState('#000000')
   const [background, setBackground] = React.useState('#ffffff')
 

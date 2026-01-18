@@ -52,7 +52,7 @@ function rgbToHsl(r: number, g: number, b: number) {
   }
 }
 
-export default function ColorPicker({ config }: ColorPickerProps) {
+export default function ColorPicker({ config: _config }: ColorPickerProps) {
   const [color, setColor] = React.useState('#3b82f6')
   const [copiedFormat, setCopiedFormat] = React.useState<string | null>(null)
 
