@@ -65,11 +65,11 @@ export default async function TemplatesPage() {
                   <p className="mt-2 line-clamp-2 text-sm text-neutral-600 dark:text-neutral-400">
                     {template.description}
                   </p>
-                  {template.features && template.features.length > 0 && (
+                  {template.pages && template.pages.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-2">
-                      {template.features.slice(0, 3).map((f: { feature: string }, i: number) => (
+                      {template.pages.map((p: { pageName: string }, i: number) => (
                         <Badge key={i} variant="secondary">
-                          {f.feature}
+                          {p.pageName}
                         </Badge>
                       ))}
                     </div>

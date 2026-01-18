@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Check } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Check, Clock, Server, FileText, Copy } from 'lucide-react'
 import { getPayloadClient } from '@/lib/payload'
 import { Button, Badge } from '@/components/ui'
 
 export const revalidate = 3600
+export const dynamicParams = true
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -40,19 +41,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayloadClient()
-  const templates = await payload.find({
-    collection: 'templates',
-    where: {
-      status: { equals: 'published' },
-    },
-    limit: 1000,
-    select: { slug: true },
-  })
+  try {
+    const payload = await getPayloadClient()
+    const templates = await payload.find({
+      collection: 'templates',
+      where: {
+        status: { equals: 'published' },
+      },
+      limit: 1000,
+      select: { slug: true },
+    })
 
-  return templates.docs.map((template) => ({
-    slug: template.slug,
-  }))
+    return templates.docs.map((template) => ({
+      slug: template.slug,
+    }))
+  } catch (error) {
+    // Database unavailable at build time - pages will be generated on-demand
+    console.warn('generateStaticParams: Database unavailable, falling back to on-demand generation')
+    return []
+  }
 }
 
 export default async function TemplatePage({ params }: Props) {
@@ -112,9 +119,17 @@ export default async function TemplatePage({ params }: Props) {
               )}
             </div>
 
-            <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
-              {template.description}
-            </p>
+            {template.tagline && (
+              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+                {template.tagline}
+              </p>
+            )}
+
+            {!template.tagline && (
+              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+                {template.description}
+              </p>
+            )}
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               {template.downloadLink && (
@@ -141,6 +156,67 @@ export default async function TemplatePage({ params }: Props) {
                   </Button>
                 </a>
               )}
+              {template.remixLink && (
+                <a
+                  href={template.remixLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" size="lg" className="w-full gap-2 sm:w-auto">
+                    Remix in Framer
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </a>
+              )}
+            </div>
+
+            {template.customizationLink && (
+              <div className="mt-4">
+                <a
+                  href={template.customizationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-neutral-600 underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                >
+                  Want more customization?
+                </a>
+              </div>
+            )}
+
+            {/* Sidebar Info */}
+            <div className="mt-10 rounded-xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
+              {template.pages && template.pages.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="flex items-center gap-2 text-sm font-semibold text-neutral-900 dark:text-white">
+                    <FileText className="h-4 w-4" />
+                    Pages Included
+                  </h3>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {template.pages.map((p: { pageName: string }, i: number) => (
+                      <Badge key={i} variant="secondary">
+                        {p.pageName}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {(template.hostingInfo?.hostingCost || template.hostingInfo?.deployTime) && (
+                <div className="space-y-3 border-t border-neutral-200 pt-6 dark:border-neutral-700">
+                  {template.hostingInfo?.hostingCost && (
+                    <div className="flex items-center gap-3 text-sm text-neutral-600 dark:text-neutral-400">
+                      <Server className="h-4 w-4 flex-shrink-0" />
+                      {template.hostingInfo.hostingCost}
+                    </div>
+                  )}
+                  {template.hostingInfo?.deployTime && (
+                    <div className="flex items-center gap-3 text-sm text-neutral-600 dark:text-neutral-400">
+                      <Clock className="h-4 w-4 flex-shrink-0" />
+                      {template.hostingInfo.deployTime}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {template.features && template.features.length > 0 && (
@@ -159,6 +235,27 @@ export default async function TemplatePage({ params }: Props) {
                     </li>
                   ))}
                 </ul>
+              </div>
+            )}
+
+            {/* Selling Points - Why Choose Section */}
+            {template.sellingPoints && template.sellingPoints.length > 0 && (
+              <div className="mt-10">
+                <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">
+                  Why Choose {template.title}?
+                </h2>
+                <div className="mt-6 space-y-6">
+                  {template.sellingPoints.map((point: { title: string; description: string }, i: number) => (
+                    <div key={i}>
+                      <h3 className="font-semibold text-neutral-900 dark:text-white">
+                        {point.title}
+                      </h3>
+                      <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+                        {point.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>

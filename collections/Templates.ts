@@ -43,6 +43,13 @@ export const Templates: CollectionConfig = {
       required: true,
     },
     {
+      name: 'tagline',
+      type: 'text',
+      admin: {
+        description: 'Short marketing subtitle shown on detail page',
+      },
+    },
+    {
       name: 'longDescription',
       type: 'richText',
     },
@@ -83,6 +90,43 @@ export const Templates: CollectionConfig = {
       },
     },
     {
+      name: 'remixLink',
+      type: 'text',
+      admin: {
+        description: 'Direct Framer remix/duplicate link for the template',
+      },
+    },
+    {
+      name: 'customizationLink',
+      type: 'text',
+      admin: {
+        description: 'URL for "Want more customization?" button (e.g., contact/services page)',
+      },
+    },
+    {
+      name: 'hostingInfo',
+      type: 'group',
+      admin: {
+        description: 'Hosting information displayed in the sidebar',
+      },
+      fields: [
+        {
+          name: 'hostingCost',
+          type: 'text',
+          admin: {
+            description: 'e.g., "Framer hosting cost $60 per year"',
+          },
+        },
+        {
+          name: 'deployTime',
+          type: 'text',
+          admin: {
+            description: 'e.g., "Deploy in 5 minutes"',
+          },
+        },
+      ],
+    },
+    {
       name: 'price',
       type: 'group',
       fields: [
@@ -115,6 +159,39 @@ export const Templates: CollectionConfig = {
         {
           name: 'feature',
           type: 'text',
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'pages',
+      type: 'array',
+      admin: {
+        description: 'List of pages included in the template (e.g., Home, About, Contact)',
+      },
+      fields: [
+        {
+          name: 'pageName',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'sellingPoints',
+      type: 'array',
+      admin: {
+        description: 'Detailed selling points for the "Why Choose" section',
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'description',
+          type: 'textarea',
           required: true,
         },
       ],

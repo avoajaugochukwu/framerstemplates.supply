@@ -6,6 +6,7 @@ import { getPayloadClient } from '@/lib/payload'
 import { RichText } from '@/components/shared/rich-text'
 
 export const revalidate = 3600
+export const dynamicParams = true
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -41,19 +42,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayloadClient()
-  const posts = await payload.find({
-    collection: 'blog',
-    where: {
-      status: { equals: 'published' },
-    },
-    limit: 1000,
-    select: { slug: true },
-  })
+  try {
+    const payload = await getPayloadClient()
+    const posts = await payload.find({
+      collection: 'blog',
+      where: {
+        status: { equals: 'published' },
+      },
+      limit: 1000,
+      select: { slug: true },
+    })
 
-  return posts.docs.map((post) => ({
-    slug: post.slug,
-  }))
+    return posts.docs.map((post) => ({
+      slug: post.slug,
+    }))
+  } catch (error) {
+    // Database unavailable at build time - pages will be generated on-demand
+    console.warn('generateStaticParams: Database unavailable, falling back to on-demand generation')
+    return []
+  }
 }
 
 export default async function BlogPostPage({ params }: Props) {

@@ -7,6 +7,7 @@ import { ArrowLeft } from 'lucide-react'
 import { getPayloadClient } from '@/lib/payload'
 
 export const revalidate = 3600
+export const dynamicParams = true
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -52,19 +53,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayloadClient()
-  const tools = await payload.find({
-    collection: 'tools',
-    where: {
-      status: { equals: 'active' },
-    },
-    limit: 100,
-    select: { slug: true },
-  })
+  try {
+    const payload = await getPayloadClient()
+    const tools = await payload.find({
+      collection: 'tools',
+      where: {
+        status: { equals: 'active' },
+      },
+      limit: 100,
+      select: { slug: true },
+    })
 
-  return tools.docs.map((tool) => ({
-    slug: tool.slug,
-  }))
+    return tools.docs.map((tool) => ({
+      slug: tool.slug,
+    }))
+  } catch (error) {
+    // Database unavailable at build time - pages will be generated on-demand
+    console.warn('generateStaticParams: Database unavailable, falling back to on-demand generation')
+    return []
+  }
 }
 
 export default async function ToolPage({ params }: Props) {
