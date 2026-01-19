@@ -1,0 +1,6 @@
+export { Hero } from './hero'
+export { SocialProof } from './social-proof'
+export { CategoryTabs } from './category-tabs'
+export { TemplateGrid } from './template-grid'
+export { FAQSection } from './faq-section'
+export { BlogSection } from './blog-section'

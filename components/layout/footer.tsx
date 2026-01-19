@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useState } from 'react'
 
 interface FooterColumn {
   title: string
@@ -21,33 +24,52 @@ interface FooterProps {
   siteName?: string
 }
 
-export function Footer({ footer, siteName = 'Framer Templates Supply' }: FooterProps) {
-  const columns = footer?.columns || [
+export function Footer({ siteName = 'FramerTemplates.supply' }: FooterProps) {
+  const [copied, setCopied] = useState(false)
+
+  const columns: FooterColumn[] = [
     {
-      title: 'Product',
+      title: 'Framer Templates',
       links: [
-        { label: 'Templates', link: '/templates' },
-        { label: 'Backgrounds', link: '/background' },
-        { label: 'Tools', link: '/tools' },
+        { label: 'All Templates', link: '/templates' },
+        { label: 'SaaS', link: '/templates?category=saas' },
+        { label: 'Agency', link: '/templates?category=agency' },
+        { label: 'Portfolio', link: '/templates?category=portfolio' },
       ],
     },
     {
-      title: 'Resources',
+      title: 'Tools',
       links: [
-        { label: 'Blog', link: '/blog' },
-        { label: 'Support', link: '/support' },
+        { label: 'Gradient Generator', link: '/tools/gradient-generator' },
+        { label: 'Color Picker', link: '/tools/color-picker' },
       ],
     },
     {
-      title: 'Legal',
+      title: 'Gradient Backgrounds',
       links: [
-        { label: 'Privacy Policy', link: '/privacy' },
-        { label: 'Terms of Service', link: '/terms' },
+        { label: 'Browse Gradients', link: '/background' },
+        { label: 'Create Your Own', link: '/tools/gradient-generator' },
       ],
     },
   ]
 
-  const bottomText = footer?.bottomText || `© ${new Date().getFullYear()} ${siteName}. All rights reserved.`
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('hello@framertemplates.supply')
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea')
+      textArea.value = 'hello@framertemplates.supply'
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
+  }
 
   return (
     <footer className="border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950">
@@ -58,7 +80,9 @@ export function Footer({ footer, siteName = 'Framer Templates Supply' }: FooterP
               {siteName}
             </Link>
             <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
-              Premium templates and tools for modern web design.
+              Premium Framer templates and design tools to help you launch beautiful,
+              high-converting websites faster. Crafted with attention to detail and
+              optimized for performance.
             </p>
           </div>
 
@@ -88,21 +112,20 @@ export function Footer({ footer, siteName = 'Framer Templates Supply' }: FooterP
         <div className="mt-12 border-t border-neutral-200 pt-8 dark:border-neutral-800">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {bottomText}
+              {new Date().getFullYear()} {siteName}. All rights reserved.
             </p>
-            {footer?.bottomLinks && (
-              <div className="flex gap-6">
-                {footer.bottomLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.link}
-                    className="text-sm text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            )}
+            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-600 dark:text-neutral-400">
+              <span>By Ugo Charles</span>
+              <span className="hidden sm:inline">|</span>
+              <span>Built with Framer</span>
+              <span className="hidden sm:inline">|</span>
+              <button
+                onClick={handleCopyEmail}
+                className="transition-colors hover:text-neutral-900 dark:hover:text-white"
+              >
+                {copied ? 'Copied!' : 'Copy Email'}
+              </button>
+            </div>
           </div>
         </div>
       </div>
