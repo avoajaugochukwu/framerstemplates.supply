@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { cn } from '@/lib/utils'
@@ -52,8 +53,9 @@ export function Header({ navigation, siteName = 'Framer Templates Supply' }: Hea
     <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-950/80">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-8">
-          <Link href="/" className="text-xl font-bold text-neutral-900 dark:text-white">
-            {siteName}
+          <Link href="/" className="flex items-center gap-2 text-xl font-bold text-neutral-900 dark:text-white">
+            <Image src="/logo.svg" alt={siteName} width={32} height={32} />
+            <span className="hidden sm:inline">{siteName}</span>
           </Link>
 
           <div className="hidden items-center gap-1 md:flex">

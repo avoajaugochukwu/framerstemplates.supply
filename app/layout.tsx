@@ -27,6 +27,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Framer Templates Supply' }],
   creator: 'Framer Templates Supply',
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
