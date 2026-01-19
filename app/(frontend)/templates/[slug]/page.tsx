@@ -1,7 +1,22 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, ExternalLink, Check, Clock, Server, FileText, Copy } from 'lucide-react'
+
+interface Media {
+  id: string
+  url: string
+  alt: string
+  width: number
+  height: number
+  filename: string
+}
+
+interface PreviewImageItem {
+  image: Media
+  caption?: string
+}
 import { getPayloadClient } from '@/lib/payload'
 import { Button, Badge } from '@/components/ui'
 
@@ -84,18 +99,32 @@ export default async function TemplatePage({ params }: Props) {
         <div className="grid gap-12 lg:grid-cols-2">
           {/* Preview Area */}
           <div>
-            <div className="aspect-[16/10] overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900">
-              {/* Main preview image */}
+            <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900">
+              {typeof template.previewImage === 'object' && template.previewImage?.url && (
+                <Image
+                  src={template.previewImage.url}
+                  alt={template.previewImage.alt || template.title}
+                  fill
+                  className="object-cover"
+                />
+              )}
             </div>
 
             {template.previewImages && template.previewImages.length > 0 && (
               <div className="mt-4 grid grid-cols-4 gap-4">
-                {template.previewImages.map((_img: unknown, i: number) => (
+                {template.previewImages.map((item: PreviewImageItem, i: number) => (
                   <div
                     key={i}
-                    className="aspect-[16/10] overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900"
+                    className="relative aspect-[16/10] overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900"
                   >
-                    {/* Additional preview image */}
+                    {typeof item.image === 'object' && item.image?.url && (
+                      <Image
+                        src={item.image.url}
+                        alt={item.image.alt || item.caption || `Preview ${i + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    )}
                   </div>
                 ))}
               </div>

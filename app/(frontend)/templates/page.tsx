@@ -1,7 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getPayloadClient } from '@/lib/payload'
 import { Badge } from '@/components/ui'
+
+interface Media {
+  id: string
+  url: string
+  alt: string
+  width: number
+  height: number
+  filename: string
+}
 
 export const metadata: Metadata = {
   title: 'Templates | Framer Templates Supply',
@@ -46,8 +56,15 @@ export default async function TemplatesPage() {
                 href={`/templates/${template.slug}`}
                 className="group overflow-hidden rounded-xl border border-neutral-200 bg-white transition-all hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
               >
-                <div className="aspect-[16/10] bg-neutral-100 dark:bg-neutral-900">
-                  {/* Template preview image */}
+                <div className="relative aspect-[16/10] bg-neutral-100 dark:bg-neutral-900">
+                  {typeof template.previewImage === 'object' && (template.previewImage as Media)?.url && (
+                    <Image
+                      src={(template.previewImage as Media).url}
+                      alt={(template.previewImage as Media).alt || template.title}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="flex items-start justify-between gap-4">
