@@ -119,7 +119,14 @@ export function Footer({ siteName = 'FramerTemplates.supply' }: FooterProps) {
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-600 dark:text-neutral-400">
               <span>By Ugo Charles</span>
               <span className="hidden sm:inline">|</span>
-              <span>Built with Framer</span>
+              <a
+                href="https://www.framer.com/?via=charles"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-neutral-900 dark:hover:text-white"
+              >
+                Built with Framer
+              </a>
               <span className="hidden sm:inline">|</span>
               <button
                 onClick={handleCopyEmail}

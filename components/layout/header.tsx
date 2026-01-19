@@ -38,9 +38,9 @@ export function Header({ navigation, siteName = 'Framer Templates Supply' }: Hea
 
   const mainNav = navigation?.mainNav || [
     { label: 'Templates', link: '/templates' },
-    { label: 'Blog', link: '/blog' },
-    { label: 'Background', link: '/background' },
     { label: 'Tools', link: '/tools' },
+    { label: 'Blog', link: '/blog' },
+    { label: 'Gradient Backgrounds', link: '/gradient-backgrounds' },
   ]
 
   const ctaButton = navigation?.ctaButton || {
