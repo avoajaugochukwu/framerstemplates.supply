@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+import { SITE_NAME } from '@/lib/constants'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -12,8 +13,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://framertemplates.sup
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Framer Templates Supply | Premium Framer Templates',
-    template: '%s | Framer Templates Supply',
+    default: `${SITE_NAME} | Premium Framer Templates`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
     'Premium Framer templates for modern websites. Beautiful, responsive templates and design tools to help you build stunning websites faster.',
@@ -25,8 +26,8 @@ export const metadata: Metadata = {
     'UI templates',
     'design tools',
   ],
-  authors: [{ name: 'Framer Templates Supply' }],
-  creator: 'Framer Templates Supply',
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
   manifest: '/site.webmanifest',
   icons: {
     icon: [
@@ -38,14 +39,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'Framer Templates Supply',
-    title: 'Framer Templates Supply | Premium Framer Templates',
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | Premium Framer Templates`,
     description:
       'Premium Framer templates for modern websites. Beautiful, responsive templates and design tools.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Framer Templates Supply | Premium Framer Templates',
+    title: `${SITE_NAME} | Premium Framer Templates`,
     description:
       'Premium Framer templates for modern websites. Beautiful, responsive templates and design tools.',
   },

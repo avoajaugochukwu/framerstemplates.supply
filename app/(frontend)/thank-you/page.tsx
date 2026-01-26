@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui'
+import { SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Thank You | Framer Templates Supply',
+  title: `Thank You | ${SITE_NAME}`,
   description: 'Thank you for your purchase!',
 }
 

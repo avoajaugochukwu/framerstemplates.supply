@@ -42,26 +42,15 @@ export function TemplateGrid({ templates, categories }: TemplateGridProps) {
   }, [templates, selectedCategory])
 
   return (
-    <section className="px-4 py-24 sm:px-6 lg:px-8">
+    <section className="px-4 pt-8 pb-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
-            Browse Templates
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-neutral-600 dark:text-neutral-400">
-            Find the perfect template for your next project.
-          </p>
-        </div>
+        <CategoryTabs
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+        />
 
-        <div className="mt-8">
-          <CategoryTabs
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-          />
-        </div>
-
-        <div className="mt-10 grid gap-8 sm:grid-cols-2">
+        <div className="mt-6 grid gap-8 sm:grid-cols-2">
           {filteredTemplates.map((template) => (
             <TemplateCard key={template.id} template={template} />
           ))}

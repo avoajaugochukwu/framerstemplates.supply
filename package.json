@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed:categories": "npx tsx scripts/seed-categories.ts"
+    "seed:categories": "npx tsx scripts/seed-categories.ts",
+    "migrate:blogs": "npx tsx scripts/migrate-framer.ts",
+    "scrape:blogs": "npx tsx scripts/scrape-framer-content.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.72.0",
@@ -16,20 +18,27 @@
     "@payloadcms/storage-s3": "^3.72.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "csv-parse": "^6.1.0",
+    "dotenv": "^17.2.3",
     "graphql": "^16.12.0",
     "lucide-react": "^0.562.0",
     "next": "^15.4.10",
     "payload": "^3.72.0",
+    "puppeteer": "^24.36.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "sharp": "^0.34.5",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "turndown": "^7.2.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/turndown": "^5.0.6",
     "eslint": "^9",
     "eslint-config-next": "^15.4.10",
     "tailwindcss": "^4",

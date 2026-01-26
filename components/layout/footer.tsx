@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { SITE_NAME } from '@/lib/constants'
 
 interface FooterColumn {
   title: string
@@ -25,7 +26,7 @@ interface FooterProps {
   siteName?: string
 }
 
-export function Footer({ siteName = 'FramerTemplates.supply' }: FooterProps) {
+export function Footer({ siteName = SITE_NAME }: FooterProps) {
   const [copied, setCopied] = useState(false)
 
   const columns: FooterColumn[] = [
@@ -43,6 +44,11 @@ export function Footer({ siteName = 'FramerTemplates.supply' }: FooterProps) {
       links: [
         { label: 'Gradient Generator', link: '/tools/gradient-generator' },
         { label: 'Color Picker', link: '/tools/color-picker' },
+        { label: 'Randomyl Random Generator', link: 'https://randomyl.com/', newTab: true },
+        { label: 'Multiple Calculators', link: 'https://calculatethis.io/', newTab: true },
+        { label: 'Daily Affirmation Generator', link: 'https://aurasyncs.com/', newTab: true },
+        { label: 'Invoice Generator', link: 'https://invoicepdf.io/', newTab: true },
+        { label: 'Coloring Book', link: 'https://scribbloo.com/', newTab: true },
       ],
     },
     {

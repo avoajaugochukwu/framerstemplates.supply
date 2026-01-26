@@ -5,9 +5,10 @@ import { importMap } from './admin/importMap'
 import { serverFunctions } from './admin/actions'
 import React from 'react'
 import '@payloadcms/next/css'
+import { SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Admin - Framer Templates Supply',
+  title: `Admin - ${SITE_NAME}`,
   description: 'Content management dashboard',
 }
 

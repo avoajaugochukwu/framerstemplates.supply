@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Calendar, User } from 'lucide-react'
 import { getPayloadClient } from '@/lib/payload'
-import { RichText } from '@/components/shared/rich-text'
+import { MarkdownContent } from '@/components/shared/markdown-content'
+import { SITE_NAME } from '@/lib/constants'
 
 export const revalidate = 3600
 export const dynamicParams = true
@@ -36,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.title} | Framer Templates Supply`,
+    title: `${post.title} | ${SITE_NAME}`,
     description: post.metaDescription || post.excerpt,
   }
 }
@@ -110,14 +112,20 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </header>
 
-          {post.featuredImage && typeof post.featuredImage === 'object' && (
-            <div className="mb-10 aspect-[16/9] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-900">
-              {/* Featured image */}
+          {post.featuredImage && typeof post.featuredImage === 'object' && post.featuredImage.url && (
+            <div className="relative mb-10 aspect-[16/9] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-900">
+              <Image
+                src={post.featuredImage.url}
+                alt={post.featuredImage.alt || post.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 896px"
+              />
             </div>
           )}
 
-          <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-neutral-900 prose-a:underline dark:prose-a:text-white">
-            <RichText content={post.content} />
+          <div className="text-neutral-700 dark:text-neutral-300">
+            <MarkdownContent content={post.content} />
           </div>
         </article>
       </div>

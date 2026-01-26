@@ -19,6 +19,8 @@ interface PreviewImageItem {
 }
 import { getPayloadClient } from '@/lib/payload'
 import { Button, Badge } from '@/components/ui'
+import { RichText } from '@/components/shared/rich-text'
+import { SITE_NAME } from '@/lib/constants'
 
 export const revalidate = 3600
 export const dynamicParams = true
@@ -50,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${template.title} | Framer Templates Supply`,
+    title: `${template.title} | ${SITE_NAME}`,
     description: template.description,
   }
 }
@@ -127,6 +129,15 @@ export default async function TemplatePage({ params }: Props) {
                     )}
                   </div>
                 ))}
+              </div>
+            )}
+
+            {/* Long Description */}
+            {template.longDescription && (
+              <div className="mt-10">
+                <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-neutral-900 prose-a:underline dark:prose-a:text-white">
+                  <RichText content={template.longDescription} />
+                </div>
               </div>
             )}
           </div>

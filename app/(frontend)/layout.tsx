@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { getPayloadClient } from '@/lib/payload'
+import { SITE_NAME } from '@/lib/constants'
 
 async function getGlobals() {
   try {
@@ -27,12 +28,12 @@ export default async function FrontendLayout({
     <div className="flex min-h-screen flex-col">
       <Header
         navigation={navigation as Parameters<typeof Header>[0]['navigation']}
-        siteName={siteSettings?.siteName || 'Framer Templates Supply'}
+        siteName={siteSettings?.siteName || SITE_NAME}
       />
       <main className="flex-1">{children}</main>
       <Footer
         footer={footer as Parameters<typeof Footer>[0]['footer']}
-        siteName={siteSettings?.siteName || 'Framer Templates Supply'}
+        siteName={siteSettings?.siteName || SITE_NAME}
       />
     </div>
   )

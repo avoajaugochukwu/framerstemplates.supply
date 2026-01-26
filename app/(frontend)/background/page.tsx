@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import { Copy } from 'lucide-react'
 import { getPayloadClient } from '@/lib/payload'
 import { Button } from '@/components/ui'
+import { SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Background Gradients | Framer Templates Supply',
+  title: `Background Gradients | ${SITE_NAME}`,
   description: 'Beautiful gradient backgrounds for your designs and projects. Copy CSS with one click.',
 }
 

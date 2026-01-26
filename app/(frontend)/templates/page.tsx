@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getPayloadClient } from '@/lib/payload'
 import { Badge } from '@/components/ui'
+import { SITE_NAME } from '@/lib/constants'
 
 interface Media {
   id: string
@@ -14,7 +15,7 @@ interface Media {
 }
 
 export const metadata: Metadata = {
-  title: 'Templates | Framer Templates Supply',
+  title: `Templates | ${SITE_NAME}`,
   description: 'Browse our collection of premium Framer templates for modern websites.',
 }
 

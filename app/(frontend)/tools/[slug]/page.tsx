@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import type { ComponentType } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { getPayloadClient } from '@/lib/payload'
+import { SITE_NAME } from '@/lib/constants'
 
 export const revalidate = 3600
 export const dynamicParams = true
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${tool.name} | Framer Templates Supply`,
+    title: `${tool.name} | ${SITE_NAME}`,
     description: tool.metaDescription || tool.shortDescription,
   }
 }

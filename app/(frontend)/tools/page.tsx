@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { getPayloadClient } from '@/lib/payload'
 import { Badge } from '@/components/ui'
+import { SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Tools | Framer Templates Supply',
+  title: `Tools | ${SITE_NAME}`,
   description: 'Helpful design tools including gradient generators, color pickers, and more.',
 }
 

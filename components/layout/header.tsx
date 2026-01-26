@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import { SITE_NAME } from '@/lib/constants'
 
 interface NavItem {
   label: string
@@ -32,11 +33,11 @@ interface HeaderProps {
   siteName?: string
 }
 
-export function Header({ navigation, siteName = 'Framer Templates Supply' }: HeaderProps) {
+export function Header({ navigation, siteName = SITE_NAME }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null)
 
-  const mainNav = navigation?.mainNav || [
+  const mainNav = navigation?.mainNav?.length ? navigation.mainNav : [
     { label: 'Templates', link: '/templates' },
     { label: 'Tools', link: '/tools' },
     { label: 'Blog', link: '/blog' },

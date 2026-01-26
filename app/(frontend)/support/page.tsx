@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { Mail, MessageCircle, FileText } from 'lucide-react'
 import { Button } from '@/components/ui'
+import { SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Support | Framer Templates Supply',
+  title: `Support | ${SITE_NAME}`,
   description: 'Get help with our templates and tools. Contact our support team.',
 }
 

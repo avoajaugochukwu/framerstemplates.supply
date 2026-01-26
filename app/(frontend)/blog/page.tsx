@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getPayloadClient } from '@/lib/payload'
+import { SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Blog | Framer Templates Supply',
+  title: `Blog | ${SITE_NAME}`,
   description: 'Tips, tutorials, and insights on design, development, and building modern websites.',
 }
 
@@ -18,6 +20,7 @@ async function getBlogPosts() {
     },
     sort: '-publishedDate',
     limit: 100,
+    depth: 1,
   })
   return posts.docs
 }
@@ -45,8 +48,16 @@ export default async function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="group overflow-hidden rounded-xl border border-neutral-200 bg-white transition-all hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
               >
-                <div className="aspect-[16/9] bg-neutral-100 dark:bg-neutral-900">
-                  {/* Blog post image */}
+                <div className="relative aspect-[16/9] bg-neutral-100 dark:bg-neutral-900">
+                  {typeof post.featuredImage === 'object' && post.featuredImage?.url && (
+                    <Image
+                      src={post.featuredImage.url}
+                      alt={post.featuredImage.alt || post.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  )}
                 </div>
                 <div className="p-6">
                   <h2 className="text-lg font-semibold text-neutral-900 group-hover:text-neutral-600 dark:text-white dark:group-hover:text-neutral-300">

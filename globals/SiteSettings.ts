@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { SITE_NAME } from '@/lib/constants'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
@@ -13,7 +14,7 @@ export const SiteSettings: GlobalConfig = {
       name: 'siteName',
       type: 'text',
       required: true,
-      defaultValue: 'Framer Templates Supply',
+      defaultValue: SITE_NAME,
     },
     {
       name: 'tagline',

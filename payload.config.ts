@@ -5,6 +5,7 @@ import { s3Storage } from '@payloadcms/storage-s3'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { SITE_NAME } from '@/lib/constants'
 
 import {
   Users,
@@ -28,7 +29,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: '- Framer Templates Supply',
+      titleSuffix: `- ${SITE_NAME}`,
     },
   },
   collections: [
