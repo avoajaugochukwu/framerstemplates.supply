@@ -49,6 +49,8 @@ export function Footer({ siteName = SITE_NAME }: FooterProps) {
         { label: 'Daily Affirmation Generator', link: 'https://aurasyncs.com/', newTab: true },
         { label: 'Invoice Generator', link: 'https://invoicepdf.io/', newTab: true },
         { label: 'Coloring Book', link: 'https://scribbloo.com/', newTab: true },
+        { label: 'Online Games', link: 'https://www.ventengames.com/', newTab: true },
+        { label: 'Field Management System', link: 'https://fieldtics.com/', newTab: true },
       ],
     },
     {
