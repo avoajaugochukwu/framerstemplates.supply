@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { SITE_NAME } from '@/lib/constants'
 
@@ -82,6 +83,18 @@ export default function RootLayout({
       <body className={`${plusJakartaSans.variable} font-sans antialiased`}>
         {children}
       </body>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-MH05D85J94"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MH05D85J94');
+        `}
+      </Script>
     </html>
   )
 }
