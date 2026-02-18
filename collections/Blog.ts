@@ -6,6 +6,9 @@ export const Blog: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'status', 'publishedDate', 'author'],
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'title',
