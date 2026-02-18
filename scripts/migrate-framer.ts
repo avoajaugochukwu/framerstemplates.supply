@@ -23,10 +23,11 @@ const extractSlug = (url: string) => {
   return parts[parts.length - 1]
 }
 
-const lexicalPlaceholder = {
+const lexicalPlaceholder: any = {
   root: {
     type: 'root',
     format: '',
+    direction: null,
     indent: 0,
     version: 1,
     children: [

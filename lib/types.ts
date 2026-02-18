@@ -1,5 +1,5 @@
 export interface Media {
-  id: string
+  id: number
   url: string
   alt: string
   width?: number
@@ -8,14 +8,14 @@ export interface Media {
 }
 
 export interface Category {
-  id: string
+  id: number
   name: string
   slug: string
   description?: string | null
 }
 
 export interface Template {
-  id: string
+  id: number
   title: string
   slug: string
   description: string
@@ -32,7 +32,7 @@ export interface Template {
 }
 
 export interface BlogPost {
-  id: string
+  id: number
   title: string
   slug: string
   excerpt?: string | null

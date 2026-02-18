@@ -5,7 +5,7 @@ import { s3Storage } from '@payloadcms/storage-s3'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-import { SITE_NAME } from './lib/constants.ts'
+import { SITE_NAME } from './lib/constants'
 
 import {
   Users,
@@ -16,8 +16,8 @@ import {
   Gradients,
   Tools,
   Colors,
-} from './collections/index.ts'
-import { SiteSettings, Navigation, Footer } from './globals/index.ts'
+} from './collections/index'
+import { SiteSettings, Navigation, Footer } from './globals/index'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)

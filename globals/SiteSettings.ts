@@ -1,5 +1,5 @@
 import type { GlobalConfig } from 'payload'
-import { SITE_NAME } from '../lib/constants.ts'
+import { SITE_NAME } from '../lib/constants'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',

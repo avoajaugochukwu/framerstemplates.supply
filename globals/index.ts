@@ -1,3 +1,3 @@
-export { SiteSettings } from './SiteSettings.ts'
-export { Navigation } from './Navigation.ts'
-export { Footer } from './Footer.ts'
+export { SiteSettings } from './SiteSettings'
+export { Navigation } from './Navigation'
+export { Footer } from './Footer'

@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui'
 import { SITE_NAME } from '@/lib/constants'
 
 interface Media {
-  id: string
+  id: number
   url: string
   alt: string
   width: number

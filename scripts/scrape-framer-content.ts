@@ -119,7 +119,7 @@ async function run() {
         collection: 'blog',
         id: post.id,
         data: {
-          content: convertToLexical(markdown),
+          content: convertToLexical(markdown) as any,
           featuredImage: mediaId || (post.featuredImage as any)?.id,
           excerpt: markdown.split('\n').find(l => l.length > 50)?.replace(/[#*]/g, '').substring(0, 160) + '...'
         },
