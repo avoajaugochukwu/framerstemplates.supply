@@ -3,9 +3,9 @@ title: 'Website Layout Ideas for Beginners: Build Clean Site Without Getting Stu
 slug: >-
   website-layout-ideas-for-beginners-build-a-clean-beautiful-site-without-getting-stuck
 excerpt: >-
-  What's the first thing people notice when they land on your website? The layout.
-  This guide walks you through simple layouts, high-performing landing pages, and
-  common beginner mistakes to avoid.
+  What's the first thing people notice when they land on your website? The
+  layout. This guide walks you through simple layouts, high-performing landing
+  pages, and common beginner mistakes to avoid.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

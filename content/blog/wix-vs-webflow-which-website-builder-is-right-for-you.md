@@ -2,9 +2,9 @@
 title: 'Wix vs. Webflow: Which Website Builder is Right for You?'
 slug: wix-vs-webflow-which-website-builder-is-right-for-you
 excerpt: >-
-  You want to build a website but don't know where to start? Wix and Webflow
-  are two of the most popular website builders out there. This guide breaks down
-  the key differences so you can confidently choose the right platform.
+  You want to build a website but don't know where to start? Wix and Webflow are
+  two of the most popular website builders out there. This guide breaks down the
+  key differences so you can confidently choose the right platform.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

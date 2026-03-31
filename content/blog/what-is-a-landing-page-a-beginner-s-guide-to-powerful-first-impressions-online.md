@@ -4,9 +4,10 @@ title: >-
   Online.
 slug: what-is-a-landing-page-a-beginner-s-guide-to-powerful-first-impressions-online
 excerpt: >-
-  Ever clicked on a link to grab a freebie or sign up for something, but ended up
-  lost in a cluttered website with too many buttons? That's where a landing page
-  comes in. Learn what landing pages are, how they work, and how to build your own.
+  Ever clicked on a link to grab a freebie or sign up for something, but ended
+  up lost in a cluttered website with too many buttons? That's where a landing
+  page comes in. Learn what landing pages are, how they work, and how to build
+  your own.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published
