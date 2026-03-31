@@ -10,6 +10,9 @@ import { SITE_NAME } from '@/lib/constants'
 export const metadata: Metadata = {
   title: `Free Framer Templates | ${SITE_NAME}`,
   description: 'Browse free, polished Framer templates for SaaS, agencies, portfolios, and more. Remix in one click and launch your site today.',
+  alternates: {
+    canonical: '/templates',
+  },
 }
 
 export default function TemplatesPage() {

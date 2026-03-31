@@ -32,6 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${tool.name} | ${SITE_NAME}`,
     description: tool.metaDescription || tool.shortDescription,
+    alternates: {
+      canonical: `/tools/${slug}`,
+    },
   }
 }
 

@@ -4,9 +4,13 @@ import Link from 'next/link'
 import { ArrowLeft, ExternalLink, Check, Clock, Server, FileText, Copy, Sparkles } from 'lucide-react'
 
 import { getTemplateBySlug, getPublishedTemplates } from '@/lib/data'
+import type { Media } from '@/lib/data'
 import { Button, Badge } from '@/components/ui'
 import { ImageGallery } from '@/components/templates/image-gallery'
 import { SITE_NAME } from '@/lib/constants'
+import { ProductJsonLd } from '@/components/seo/json-ld'
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://framertemplates.supply'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -23,6 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${template.title} | ${SITE_NAME}`,
     description: template.description,
+    alternates: {
+      canonical: `${siteUrl}/templates/${slug}`,
+    },
   }
 }
 
@@ -45,8 +52,21 @@ export default async function TemplatePage({ params }: Props) {
   const hasFeatures = template.features && template.features.length > 0
   const hasSellingPoints = template.sellingPoints && template.sellingPoints.length > 0
 
+  const previewImageUrl = typeof template.previewImage === 'string'
+    ? template.previewImage
+    : (template.previewImage as Media)?.url
+
   return (
     <div className="px-4 py-12 sm:px-6 lg:px-8">
+      <ProductJsonLd
+        name={template.title}
+        description={template.description}
+        url={`${siteUrl}/templates/${slug}`}
+        image={previewImageUrl || undefined}
+        isFree={template.price?.isFree ?? undefined}
+        price={template.price?.amount ?? undefined}
+        currency={template.price?.currency ?? undefined}
+      />
       <div className="mx-auto max-w-7xl">
         {/* Breadcrumb */}
         <Link

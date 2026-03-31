@@ -6,6 +6,9 @@ import { SITE_NAME } from '@/lib/constants'
 export const metadata: Metadata = {
   title: `Support | ${SITE_NAME}`,
   description: 'Get help with our templates and tools. Contact our support team.',
+  alternates: {
+    canonical: '/support',
+  },
 }
 
 export default function SupportPage() {

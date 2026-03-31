@@ -7,6 +7,9 @@ import { SITE_NAME } from '@/lib/constants'
 export const metadata: Metadata = {
   title: `Gradients | ${SITE_NAME}`,
   description: 'Browse our collection of beautiful CSS gradients — linear, radial, and conic.',
+  alternates: {
+    canonical: '/gradients',
+  },
 }
 
 export default function GradientsPage() {

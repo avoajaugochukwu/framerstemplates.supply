@@ -21,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${color.name} (${color.hex}) | ${SITE_NAME}`,
     description: color.description || `${color.name} color — hex: ${color.hex}, RGB: ${color.rgb?.r}, ${color.rgb?.g}, ${color.rgb?.b}. Explore values and usage.`,
+    alternates: {
+      canonical: `/colors/${slug}`,
+    },
   }
 }
 

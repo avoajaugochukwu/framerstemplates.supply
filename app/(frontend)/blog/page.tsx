@@ -7,6 +7,9 @@ import { SITE_NAME } from '@/lib/constants'
 export const metadata: Metadata = {
   title: `Blog | ${SITE_NAME}`,
   description: 'Tips, tutorials, and insights on design, development, and building modern websites.',
+  alternates: {
+    canonical: '/blog',
+  },
 }
 
 export default function BlogPage() {

@@ -7,6 +7,9 @@ import { SITE_NAME } from '@/lib/constants'
 export const metadata: Metadata = {
   title: `Colors | ${SITE_NAME}`,
   description: 'Explore our curated collection of colors with hex, RGB, HSL values and Tailwind classes.',
+  alternates: {
+    canonical: '/colors',
+  },
 }
 
 export default function ColorsPage() {

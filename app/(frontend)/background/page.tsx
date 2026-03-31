@@ -7,6 +7,9 @@ import { SITE_NAME } from '@/lib/constants'
 export const metadata: Metadata = {
   title: `Background Gradients | ${SITE_NAME}`,
   description: 'Beautiful gradient backgrounds for your designs and projects. Copy CSS with one click.',
+  alternates: {
+    canonical: '/background',
+  },
 }
 
 export default function BackgroundPage() {

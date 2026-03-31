@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import { SITE_NAME } from '@/lib/constants'
+import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/seo/json-ld'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -35,6 +36,9 @@ export const metadata: Metadata = {
       { url: '/favicon.ico', sizes: 'any' },
     ],
     apple: '/apple-icon.png',
+  },
+  alternates: {
+    canonical: siteUrl,
   },
   openGraph: {
     type: 'website',
@@ -81,6 +85,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakartaSans.variable} font-sans antialiased`}>
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
         {children}
       </body>
       <Script

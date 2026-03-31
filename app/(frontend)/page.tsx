@@ -2,6 +2,8 @@ import { getPublishedTemplates, getCategories } from '@/lib/data'
 import { Hero, TemplateGrid, BlogSection, FAQSection } from '@/components/home'
 import { getAllPosts } from '@/lib/blog'
 import type { Category, Media } from '@/lib/data'
+import { FAQPageJsonLd } from '@/components/seo/json-ld'
+import { faqData } from '@/lib/data/faq'
 
 function getLatestPosts() {
   return getAllPosts().slice(0, 3)
@@ -31,6 +33,7 @@ export default function HomePage() {
 
   return (
     <>
+      <FAQPageJsonLd faqs={faqData} />
       <Hero />
       <TemplateGrid templates={formattedTemplates} categories={categories} />
       <BlogSection posts={formattedPosts} />

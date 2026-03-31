@@ -21,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${gradient.name} Gradient | ${SITE_NAME}`,
     description: `${gradient.name} — a ${gradient.gradientType} CSS gradient. Copy the CSS and use it in your projects.`,
+    alternates: {
+      canonical: `/gradients/${slug}`,
+    },
   }
 }
 

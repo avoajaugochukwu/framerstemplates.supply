@@ -8,6 +8,9 @@ import { SITE_NAME } from '@/lib/constants'
 export const metadata: Metadata = {
   title: `Tools | ${SITE_NAME}`,
   description: 'Helpful design tools including gradient generators, color pickers, and more.',
+  alternates: {
+    canonical: '/tools',
+  },
 }
 
 export default function ToolsPage() {

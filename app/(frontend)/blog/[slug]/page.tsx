@@ -5,6 +5,9 @@ import Image from 'next/image'
 import { ArrowLeft, Calendar, User } from 'lucide-react'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { SITE_NAME } from '@/lib/constants'
+import { BlogPostingJsonLd } from '@/components/seo/json-ld'
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://framertemplates.supply'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -26,6 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | ${SITE_NAME}`,
     description: post.excerpt,
+    alternates: {
+      canonical: `${siteUrl}/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -55,6 +61,14 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="px-4 py-16 sm:px-6 lg:px-8">
+      <BlogPostingJsonLd
+        title={post.title}
+        description={post.excerpt || ''}
+        url={`${siteUrl}/blog/${slug}`}
+        image={post.featuredImage || undefined}
+        publishDate={post.publishDate}
+        author={post.author}
+      />
       <div className="mx-auto max-w-3xl">
         <Link
           href="/blog"
