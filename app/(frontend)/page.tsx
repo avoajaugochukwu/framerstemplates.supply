@@ -1,47 +1,15 @@
-import { getPayloadClient } from '@/lib/payload'
+import { getPublishedTemplates, getCategories } from '@/lib/data'
 import { Hero, TemplateGrid, BlogSection, FAQSection } from '@/components/home'
 import { getAllPosts } from '@/lib/blog'
-import type { Category, Media } from '@/lib/types'
-
-async function getTemplates() {
-  try {
-    const payload = await getPayloadClient()
-    const templates = await payload.find({
-      collection: 'templates',
-      where: {
-        status: { equals: 'published' },
-      },
-      sort: '-createdAt',
-      depth: 2,
-    })
-    return templates.docs
-  } catch {
-    return []
-  }
-}
-
-async function getCategories() {
-  try {
-    const payload = await getPayloadClient()
-    const categories = await payload.find({
-      collection: 'categories',
-      limit: 100,
-    })
-    return categories.docs as Category[]
-  } catch {
-    return []
-  }
-}
+import type { Category, Media } from '@/lib/data'
 
 function getLatestPosts() {
   return getAllPosts().slice(0, 3)
 }
 
-export default async function HomePage() {
-  const [templates, categories] = await Promise.all([
-    getTemplates(),
-    getCategories(),
-  ])
+export default function HomePage() {
+  const templates = getPublishedTemplates()
+  const categories = getCategories()
   const posts = getLatestPosts()
 
   const formattedTemplates = templates.map((template) => ({

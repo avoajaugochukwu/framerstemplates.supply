@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { getPayloadClient } from '@/lib/payload'
+import { getActiveTools } from '@/lib/data'
 import { Badge } from '@/components/ui'
 import { SITE_NAME } from '@/lib/constants'
 
@@ -10,23 +10,8 @@ export const metadata: Metadata = {
   description: 'Helpful design tools including gradient generators, color pickers, and more.',
 }
 
-export const revalidate = 3600
-
-async function getTools() {
-  const payload = await getPayloadClient()
-  const tools = await payload.find({
-    collection: 'tools',
-    where: {
-      status: { not_equals: 'archived' },
-    },
-    sort: 'name',
-    limit: 100,
-  })
-  return tools.docs
-}
-
-export default async function ToolsPage() {
-  const tools = await getTools()
+export default function ToolsPage() {
+  const tools = getActiveTools()
 
   return (
     <div className="px-4 py-16 sm:px-6 lg:px-8">

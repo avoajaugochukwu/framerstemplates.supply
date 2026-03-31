@@ -4,11 +4,8 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import type { ComponentType } from 'react'
 import { ArrowLeft } from 'lucide-react'
-import { getPayloadClient } from '@/lib/payload'
+import { getToolBySlug, getActiveTools } from '@/lib/data'
 import { SITE_NAME } from '@/lib/constants'
-
-export const revalidate = 3600
-export const dynamicParams = true
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -24,27 +21,12 @@ const toolComponents: Record<string, ComponentType<ToolComponentProps>> = {
   'contrast-checker': dynamic(() => import('@/components/tools/contrast-checker')),
 }
 
-async function getTool(slug: string) {
-  const payload = await getPayloadClient()
-  const tools = await payload.find({
-    collection: 'tools',
-    where: {
-      slug: { equals: slug },
-      status: { equals: 'active' },
-    },
-    limit: 1,
-  })
-  return tools.docs[0] || null
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const tool = await getTool(slug)
+  const tool = getToolBySlug(slug)
 
   if (!tool) {
-    return {
-      title: 'Tool Not Found',
-    }
+    return { title: 'Tool Not Found' }
   }
 
   return {
@@ -53,31 +35,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    const payload = await getPayloadClient()
-    const tools = await payload.find({
-      collection: 'tools',
-      where: {
-        status: { equals: 'active' },
-      },
-      limit: 100,
-      select: { slug: true },
-    })
-
-    return tools.docs.map((tool) => ({
-      slug: tool.slug,
-    }))
-  } catch (error) {
-    // Database unavailable at build time - pages will be generated on-demand
-    console.warn('generateStaticParams: Database unavailable, falling back to on-demand generation')
-    return []
-  }
+export function generateStaticParams() {
+  return getActiveTools()
+    .filter((t) => t.status === 'active')
+    .map((tool) => ({ slug: tool.slug }))
 }
 
 export default async function ToolPage({ params }: Props) {
   const { slug } = await params
-  const tool = await getTool(slug)
+  const tool = getToolBySlug(slug)
 
   if (!tool) {
     notFound()

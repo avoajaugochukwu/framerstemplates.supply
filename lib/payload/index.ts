@@ -1,1 +1,0 @@
-export { getPayloadClient } from './client'

@@ -4,38 +4,20 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, ExternalLink, Check, Clock, Server, FileText, Copy } from 'lucide-react'
 
-import { getPayloadClient } from '@/lib/payload'
+import { getTemplateBySlug, getPublishedTemplates } from '@/lib/data'
 import { Button, Badge } from '@/components/ui'
-import { RichText } from '@/components/shared/rich-text'
 import { SITE_NAME } from '@/lib/constants'
-
-export const revalidate = 3600
-export const dynamicParams = true
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-async function getTemplate(slug: string) {
-  const payload = await getPayloadClient()
-  const templates = await payload.find({
-    collection: 'templates',
-    where: {
-      slug: { equals: slug },
-    },
-    limit: 1,
-  })
-  return templates.docs[0] || null
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const template = await getTemplate(slug)
+  const template = getTemplateBySlug(slug)
 
   if (!template) {
-    return {
-      title: 'Template Not Found',
-    }
+    return { title: 'Template Not Found' }
   }
 
   return {
@@ -44,31 +26,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    const payload = await getPayloadClient()
-    const templates = await payload.find({
-      collection: 'templates',
-      where: {
-        status: { equals: 'published' },
-      },
-      limit: 1000,
-      select: { slug: true },
-    })
-
-    return templates.docs.map((template) => ({
-      slug: template.slug,
-    }))
-  } catch (error) {
-    // Database unavailable at build time - pages will be generated on-demand
-    console.warn('generateStaticParams: Database unavailable, falling back to on-demand generation')
-    return []
-  }
+export function generateStaticParams() {
+  return getPublishedTemplates().map((template) => ({
+    slug: template.slug,
+  }))
 }
 
 export default async function TemplatePage({ params }: Props) {
   const { slug } = await params
-  const template = await getTemplate(slug)
+  const template = getTemplateBySlug(slug)
 
   if (!template) {
     notFound()
@@ -123,7 +89,7 @@ export default async function TemplatePage({ params }: Props) {
             {template.longDescription && (
               <div className="mt-10">
                 <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-neutral-900 prose-a:underline dark:prose-a:text-white">
-                  <RichText content={template.longDescription} />
+                  {/* Rich text content would need a different renderer without Payload */}
                 </div>
               </div>
             )}
@@ -265,7 +231,6 @@ export default async function TemplatePage({ params }: Props) {
               </div>
             )}
 
-            {/* Selling Points - Why Choose Section */}
             {template.sellingPoints && template.sellingPoints.length > 0 && (
               <div className="mt-10">
                 <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">

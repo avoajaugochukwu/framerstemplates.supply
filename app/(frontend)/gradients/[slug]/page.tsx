@@ -2,32 +2,17 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import { getPayloadClient } from '@/lib/payload'
+import { getGradientBySlug, getGradients } from '@/lib/data'
 import { Badge } from '@/components/ui'
 import { SITE_NAME } from '@/lib/constants'
-
-export const revalidate = 3600
-export const dynamicParams = true
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-async function getGradient(slug: string) {
-  const payload = await getPayloadClient()
-  const gradients = await payload.find({
-    collection: 'gradients',
-    where: {
-      slug: { equals: slug },
-    },
-    limit: 1,
-  })
-  return gradients.docs[0] || null
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const gradient = await getGradient(slug)
+  const gradient = getGradientBySlug(slug)
 
   if (!gradient) {
     return { title: 'Gradient Not Found' }
@@ -39,27 +24,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    const payload = await getPayloadClient()
-    const gradients = await payload.find({
-      collection: 'gradients',
-      limit: 1000,
-      select: { slug: true },
-    })
-
-    return gradients.docs.map((gradient) => ({
-      slug: gradient.slug,
-    }))
-  } catch {
-    console.warn('generateStaticParams: Database unavailable, falling back to on-demand generation')
-    return []
-  }
+export function generateStaticParams() {
+  return getGradients().map((gradient) => ({
+    slug: gradient.slug,
+  }))
 }
 
 export default async function GradientPage({ params }: Props) {
   const { slug } = await params
-  const gradient = await getGradient(slug)
+  const gradient = getGradientBySlug(slug)
 
   if (!gradient) {
     notFound()
@@ -77,7 +50,6 @@ export default async function GradientPage({ params }: Props) {
         </Link>
 
         <div className="grid gap-10 lg:grid-cols-2">
-          {/* Gradient Preview */}
           <div>
             <div
               className="aspect-square w-full rounded-2xl border border-neutral-200 dark:border-neutral-800"
@@ -85,7 +57,6 @@ export default async function GradientPage({ params }: Props) {
             />
           </div>
 
-          {/* Gradient Details */}
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
               {gradient.name}
@@ -94,11 +65,10 @@ export default async function GradientPage({ params }: Props) {
             <div className="mt-4 flex flex-wrap gap-2">
               <Badge variant="secondary">{gradient.gradientType}</Badge>
               {gradient.angle != null && (
-                <Badge variant="secondary">{gradient.angle}°</Badge>
+                <Badge variant="secondary">{gradient.angle}deg</Badge>
               )}
             </div>
 
-            {/* CSS Code */}
             <div className="mt-8">
               <h2 className="text-sm font-semibold text-neutral-900 dark:text-white">CSS</h2>
               <pre className="mt-2 overflow-x-auto rounded-lg border border-neutral-200 bg-neutral-50 p-4 font-mono text-sm text-neutral-800 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200">
@@ -106,7 +76,6 @@ export default async function GradientPage({ params }: Props) {
               </pre>
             </div>
 
-            {/* Color Palette */}
             {gradient.colorPalette && gradient.colorPalette.length > 0 && (
               <div className="mt-8">
                 <h2 className="text-sm font-semibold text-neutral-900 dark:text-white">
@@ -136,7 +105,6 @@ export default async function GradientPage({ params }: Props) {
               </div>
             )}
 
-            {/* Tags */}
             {gradient.tags && gradient.tags.length > 0 && (
               <div className="mt-8 flex flex-wrap gap-2">
                 {gradient.tags.map((t, i) => (

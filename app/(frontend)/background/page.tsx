@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Copy } from 'lucide-react'
-import { getPayloadClient } from '@/lib/payload'
+import { getGradients } from '@/lib/data'
 import { Button } from '@/components/ui'
 import { SITE_NAME } from '@/lib/constants'
 
@@ -9,20 +9,8 @@ export const metadata: Metadata = {
   description: 'Beautiful gradient backgrounds for your designs and projects. Copy CSS with one click.',
 }
 
-export const revalidate = 3600
-
-async function getGradients() {
-  const payload = await getPayloadClient()
-  const gradients = await payload.find({
-    collection: 'gradients',
-    sort: '-createdAt',
-    limit: 100,
-  })
-  return gradients.docs
-}
-
-export default async function BackgroundPage() {
-  const gradients = await getGradients()
+export default function BackgroundPage() {
+  const gradients = getGradients()
 
   return (
     <div className="px-4 py-16 sm:px-6 lg:px-8">
@@ -59,7 +47,7 @@ export default async function BackgroundPage() {
                   </h3>
                   <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                     {gradient.gradientType}
-                    {gradient.angle !== undefined && ` • ${gradient.angle}°`}
+                    {gradient.angle !== undefined && gradient.angle !== null && ` • ${gradient.angle}°`}
                   </p>
                 </div>
               </div>

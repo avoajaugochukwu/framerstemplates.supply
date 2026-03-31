@@ -1,33 +1,18 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Copy } from 'lucide-react'
-import { getPayloadClient } from '@/lib/payload'
+import { ArrowLeft } from 'lucide-react'
+import { getColorBySlug, getColors } from '@/lib/data'
 import { Badge } from '@/components/ui'
 import { SITE_NAME } from '@/lib/constants'
-
-export const revalidate = 3600
-export const dynamicParams = true
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-async function getColor(slug: string) {
-  const payload = await getPayloadClient()
-  const colors = await payload.find({
-    collection: 'colors',
-    where: {
-      slug: { equals: slug },
-    },
-    limit: 1,
-  })
-  return colors.docs[0] || null
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const color = await getColor(slug)
+  const color = getColorBySlug(slug)
 
   if (!color) {
     return { title: 'Color Not Found' }
@@ -39,22 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    const payload = await getPayloadClient()
-    const colors = await payload.find({
-      collection: 'colors',
-      limit: 1000,
-      select: { slug: true },
-    })
-
-    return colors.docs.map((color) => ({
-      slug: color.slug,
-    }))
-  } catch {
-    console.warn('generateStaticParams: Database unavailable, falling back to on-demand generation')
-    return []
-  }
+export function generateStaticParams() {
+  return getColors().map((color) => ({
+    slug: color.slug,
+  }))
 }
 
 function ColorValue({ label, value }: { label: string; value: string }) {
@@ -68,7 +41,7 @@ function ColorValue({ label, value }: { label: string; value: string }) {
 
 export default async function ColorPage({ params }: Props) {
   const { slug } = await params
-  const color = await getColor(slug)
+  const color = getColorBySlug(slug)
 
   if (!color) {
     notFound()
@@ -89,7 +62,6 @@ export default async function ColorPage({ params }: Props) {
         </Link>
 
         <div className="grid gap-10 lg:grid-cols-2">
-          {/* Color Preview */}
           <div>
             <div
               className="aspect-square w-full rounded-2xl border border-neutral-200 dark:border-neutral-800"
@@ -97,7 +69,6 @@ export default async function ColorPage({ params }: Props) {
             />
           </div>
 
-          {/* Color Details */}
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
               {color.name}
@@ -121,7 +92,6 @@ export default async function ColorPage({ params }: Props) {
               )}
             </div>
 
-            {/* Color Values */}
             <div className="mt-8 space-y-3">
               <ColorValue label="HEX" value={color.hex} />
               {rgbString && <ColorValue label="RGB" value={rgbString} />}

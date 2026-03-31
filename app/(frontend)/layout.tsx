@@ -1,28 +1,16 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { getPayloadClient } from '@/lib/payload'
+import { getSiteSettings, getNavigation, getFooter } from '@/lib/data'
 import { SITE_NAME } from '@/lib/constants'
 
-async function getGlobals() {
-  try {
-    const payload = await getPayloadClient()
-    const [siteSettings, navigation, footer] = await Promise.all([
-      payload.findGlobal({ slug: 'site-settings' }),
-      payload.findGlobal({ slug: 'navigation' }),
-      payload.findGlobal({ slug: 'footer' }),
-    ])
-    return { siteSettings, navigation, footer }
-  } catch {
-    return { siteSettings: null, navigation: null, footer: null }
-  }
-}
-
-export default async function FrontendLayout({
+export default function FrontendLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const { siteSettings, navigation, footer } = await getGlobals()
+  const siteSettings = getSiteSettings()
+  const navigation = getNavigation()
+  const footer = getFooter()
 
   return (
     <div className="flex min-h-screen flex-col">

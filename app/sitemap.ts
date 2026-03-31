@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next'
-import { getPayloadClient } from '@/lib/payload'
+import { getPublishedTemplates, getActiveTools, getColors, getGradients } from '@/lib/data'
 import { getAllPosts } from '@/lib/blog'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://framertemplates.supply'
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
@@ -56,7 +56,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Blog pages from local files
   const posts = getAllPosts()
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
@@ -65,61 +64,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  try {
-    const payload = await getPayloadClient()
+  const templates = getPublishedTemplates()
+  const templatePages: MetadataRoute.Sitemap = templates.map((template) => ({
+    url: `${siteUrl}/templates/${template.slug}`,
+    lastModified: template.updatedAt ? new Date(template.updatedAt) : new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }))
 
-    const [templates, tools, colors, gradients] = await Promise.all([
-      payload.find({
-        collection: 'templates',
-        where: { status: { equals: 'published' } },
-        limit: 1000,
-      }),
-      payload.find({
-        collection: 'tools',
-        where: { status: { equals: 'active' } },
-        limit: 100,
-      }),
-      payload.find({
-        collection: 'colors',
-        limit: 1000,
-      }),
-      payload.find({
-        collection: 'gradients',
-        limit: 1000,
-      }),
-    ])
+  const tools = getActiveTools().filter((t) => t.status === 'active')
+  const toolPages: MetadataRoute.Sitemap = tools.map((tool) => ({
+    url: `${siteUrl}/tools/${tool.slug}`,
+    lastModified: tool.updatedAt ? new Date(tool.updatedAt) : new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
 
-    const templatePages: MetadataRoute.Sitemap = templates.docs.map((template) => ({
-      url: `${siteUrl}/templates/${template.slug}`,
-      lastModified: template.updatedAt ? new Date(template.updatedAt as string) : new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    }))
+  const colors = getColors()
+  const colorPages: MetadataRoute.Sitemap = colors.map((color) => ({
+    url: `${siteUrl}/colors/${color.slug}`,
+    lastModified: color.updatedAt ? new Date(color.updatedAt) : new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
 
-    const toolPages: MetadataRoute.Sitemap = tools.docs.map((tool) => ({
-      url: `${siteUrl}/tools/${tool.slug}`,
-      lastModified: tool.updatedAt ? new Date(tool.updatedAt as string) : new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    }))
+  const gradients = getGradients()
+  const gradientPages: MetadataRoute.Sitemap = gradients.map((gradient) => ({
+    url: `${siteUrl}/gradients/${gradient.slug}`,
+    lastModified: gradient.updatedAt ? new Date(gradient.updatedAt) : new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
 
-    const colorPages: MetadataRoute.Sitemap = colors.docs.map((color) => ({
-      url: `${siteUrl}/colors/${color.slug}`,
-      lastModified: color.updatedAt ? new Date(color.updatedAt as string) : new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
-
-    const gradientPages: MetadataRoute.Sitemap = gradients.docs.map((gradient) => ({
-      url: `${siteUrl}/gradients/${gradient.slug}`,
-      lastModified: gradient.updatedAt ? new Date(gradient.updatedAt as string) : new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
-
-    return [...staticPages, ...templatePages, ...blogPages, ...toolPages, ...colorPages, ...gradientPages]
-  } catch {
-    console.warn('sitemap: Database unavailable, returning static + blog pages only')
-    return [...staticPages, ...blogPages]
-  }
+  return [...staticPages, ...templatePages, ...blogPages, ...toolPages, ...colorPages, ...gradientPages]
 }

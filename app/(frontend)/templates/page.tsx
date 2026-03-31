@@ -1,41 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { getPayloadClient } from '@/lib/payload'
+import { getPublishedTemplates } from '@/lib/data'
+import type { Media } from '@/lib/data'
 import { Badge } from '@/components/ui'
 import { SITE_NAME } from '@/lib/constants'
-
-interface Media {
-  id: number
-  url: string
-  alt: string
-  width: number
-  height: number
-  filename: string
-}
 
 export const metadata: Metadata = {
   title: `Templates | ${SITE_NAME}`,
   description: 'Browse our collection of premium Framer templates for modern websites.',
 }
 
-export const revalidate = 3600
-
-async function getTemplates() {
-  const payload = await getPayloadClient()
-  const templates = await payload.find({
-    collection: 'templates',
-    where: {
-      status: { equals: 'published' },
-    },
-    sort: '-createdAt',
-    limit: 100,
-  })
-  return templates.docs
-}
-
-export default async function TemplatesPage() {
-  const templates = await getTemplates()
+export default function TemplatesPage() {
+  const templates = getPublishedTemplates()
 
   return (
     <div className="px-4 py-16 sm:px-6 lg:px-8">

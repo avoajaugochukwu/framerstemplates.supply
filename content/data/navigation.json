@@ -1,0 +1,14 @@
+{
+  "mainNav": [
+    { "label": "Templates", "link": "/templates" },
+    { "label": "Tools", "link": "/tools" },
+    { "label": "Colors", "link": "/colors" },
+    { "label": "Gradients", "link": "/gradients" },
+    { "label": "Blog", "link": "/blog" }
+  ],
+  "ctaButton": {
+    "show": true,
+    "label": "Get Started",
+    "link": "/templates"
+  }
+}

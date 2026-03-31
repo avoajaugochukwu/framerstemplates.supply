@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getPayloadClient } from '@/lib/payload'
+import { getColors } from '@/lib/data'
 import { Badge } from '@/components/ui'
 import { SITE_NAME } from '@/lib/constants'
 
@@ -9,20 +9,8 @@ export const metadata: Metadata = {
   description: 'Explore our curated collection of colors with hex, RGB, HSL values and Tailwind classes.',
 }
 
-export const revalidate = 3600
-
-async function getColors() {
-  const payload = await getPayloadClient()
-  const colors = await payload.find({
-    collection: 'colors',
-    sort: 'name',
-    limit: 200,
-  })
-  return colors.docs
-}
-
-export default async function ColorsPage() {
-  const colors = await getColors()
+export default function ColorsPage() {
+  const colors = getColors()
 
   return (
     <div className="px-4 py-16 sm:px-6 lg:px-8">

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getPayloadClient } from '@/lib/payload'
+import { getGradients } from '@/lib/data'
 import { Badge } from '@/components/ui'
 import { SITE_NAME } from '@/lib/constants'
 
@@ -9,20 +9,8 @@ export const metadata: Metadata = {
   description: 'Browse our collection of beautiful CSS gradients — linear, radial, and conic.',
 }
 
-export const revalidate = 3600
-
-async function getGradients() {
-  const payload = await getPayloadClient()
-  const gradients = await payload.find({
-    collection: 'gradients',
-    sort: 'name',
-    limit: 200,
-  })
-  return gradients.docs
-}
-
-export default async function GradientsPage() {
-  const gradients = await getGradients()
+export default function GradientsPage() {
+  const gradients = getGradients()
 
   return (
     <div className="px-4 py-16 sm:px-6 lg:px-8">
