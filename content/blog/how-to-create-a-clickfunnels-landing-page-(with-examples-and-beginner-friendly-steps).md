@@ -6,8 +6,8 @@ slug: >-
   how-to-create-a-clickfunnels-landing-page-(with-examples-and-beginner-friendly-steps)
 excerpt: >-
   Creating a landing page doesn't have to be complicated. This beginner-friendly
-  guide walks you through building a ClickFunnels landing page step by step, with
-  real examples, templates, and tips to get results.
+  guide walks you through building a ClickFunnels landing page step by step,
+  with real examples, templates, and tips to get results.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

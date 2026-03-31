@@ -2,9 +2,9 @@
 title: 'Landing Page vs Website: What''s the Real Difference & Which Do You Need?'
 slug: landing-page-vs-website-what-s-the-real-difference-which-do-you-need
 excerpt: >-
-  Have you ever wondered, "Do I really need a whole website? Or can I get by with
-  just a landing page?" This guide breaks down the differences and helps you
-  choose the right option for your goals.
+  Have you ever wondered, "Do I really need a whole website? Or can I get by
+  with just a landing page?" This guide breaks down the differences and helps
+  you choose the right option for your goals.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

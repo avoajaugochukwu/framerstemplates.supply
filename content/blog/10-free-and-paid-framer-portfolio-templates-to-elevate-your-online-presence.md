@@ -3,8 +3,8 @@ title: 10 Free and Paid Framer Portfolio Templates to Elevate Your Online Presen
 slug: 10-free-and-paid-framer-portfolio-templates-to-elevate-your-online-presence
 excerpt: >-
   In today's digital world, having a strong online portfolio is essential for
-  designers, developers, and creatives looking to showcase their work and attract
-  new opportunities.
+  designers, developers, and creatives looking to showcase their work and
+  attract new opportunities.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

@@ -2,9 +2,9 @@
 title: 'Framer SEO Optimization: How to Optimize Your Framer Site or Framer Template'
 slug: framer-seo-optimization
 excerpt: >-
-  Learn how to optimize your Framer site or template for search engines with this
-  comprehensive guide covering Google Analytics, Search Console, link building,
-  meta descriptions, and more.
+  Learn how to optimize your Framer site or template for search engines with
+  this comprehensive guide covering Google Analytics, Search Console, link
+  building, meta descriptions, and more.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

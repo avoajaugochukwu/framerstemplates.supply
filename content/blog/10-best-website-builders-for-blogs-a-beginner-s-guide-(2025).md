@@ -2,9 +2,9 @@
 title: 'Best Website Builders for Blogs: A Beginner''s Guide (2025)'
 slug: 10-best-website-builders-for-blogs-a-beginner-s-guide-(2025)
 excerpt: >-
-  Discover the 10 best website builders for blogs in 2025. This beginner-friendly
-  guide covers Wix, WordPress, Squarespace, and more to help you pick the right
-  platform and publish your first post with confidence.
+  Discover the 10 best website builders for blogs in 2025. This
+  beginner-friendly guide covers Wix, WordPress, Squarespace, and more to help
+  you pick the right platform and publish your first post with confidence.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

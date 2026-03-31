@@ -4,9 +4,10 @@ title: >-
   Spaces
 slug: organic-modern-style-for-beginners-a-calm-cozy-guide-to-natural-living-spaces
 excerpt: >-
-  Have you ever walked into a room and instantly felt calm? That's the quiet magic
-  of organic modern style. This guide covers everything from room design to decor
-  basics, with beginner-friendly tips for creating a natural, peaceful home.
+  Have you ever walked into a room and instantly felt calm? That's the quiet
+  magic of organic modern style. This guide covers everything from room design
+  to decor basics, with beginner-friendly tips for creating a natural, peaceful
+  home.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

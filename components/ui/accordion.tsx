@@ -8,9 +8,9 @@ import { cn } from '@/lib/utils'
 const accordionVariants = cva('divide-y', {
   variants: {
     variant: {
-      default: 'divide-neutral-200 dark:divide-neutral-800',
+      default: 'divide-border',
       bordered:
-        'divide-neutral-200 border border-neutral-200 rounded-lg dark:divide-neutral-800 dark:border-neutral-800',
+        'divide-border border border-border rounded-xl',
     },
   },
   defaultVariants: {
@@ -118,7 +118,7 @@ function AccordionTrigger({ children, className, value, ...props }: AccordionTri
     <button
       type="button"
       className={cn(
-        'flex w-full items-center justify-between py-4 text-left font-medium transition-all hover:underline',
+        'flex w-full items-center justify-between py-4 text-left font-medium transition-colors hover:text-accent',
         className
       )}
       onClick={() => toggleItem(value)}
@@ -128,7 +128,7 @@ function AccordionTrigger({ children, className, value, ...props }: AccordionTri
       {children}
       <ChevronDown
         className={cn(
-          'h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200',
+          'h-4 w-4 shrink-0 text-muted transition-transform duration-200',
           isOpen && 'rotate-180'
         )}
       />

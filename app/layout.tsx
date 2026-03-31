@@ -14,18 +14,18 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://framertemplates.sup
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${SITE_NAME} | Premium Framer Templates`,
+    default: `${SITE_NAME} — Free Framer Templates to Ship Your Site Faster`,
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    'Premium Framer templates for modern websites. Beautiful, responsive templates and design tools to help you build stunning websites faster.',
+    'Free, polished Framer templates for SaaS, portfolios, and agencies. Remix in one click, customize in minutes, and launch a site that converts — no code needed.',
   keywords: [
     'Framer templates',
-    'website templates',
-    'Framer',
-    'web design',
-    'UI templates',
-    'design tools',
+    'free Framer templates',
+    'Framer website templates',
+    'no-code website builder',
+    'Framer portfolio template',
+    'Framer SaaS template',
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -41,15 +41,15 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Premium Framer Templates`,
+    title: `${SITE_NAME} — Free Framer Templates to Ship Your Site Faster`,
     description:
-      'Premium Framer templates for modern websites. Beautiful, responsive templates and design tools.',
+      'Free Framer templates for SaaS, portfolios, and agencies. Remix in one click, launch in minutes.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_NAME} | Premium Framer Templates`,
+    title: `${SITE_NAME} — Free Framer Templates to Ship Your Site Faster`,
     description:
-      'Premium Framer templates for modern websites. Beautiful, responsive templates and design tools.',
+      'Free Framer templates for SaaS, portfolios, and agencies. Remix in one click, launch in minutes.',
   },
   robots: {
     index: true,
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: light)', color: '#fafafa' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
   ],
   width: 'device-width',
   initialScale: 1,

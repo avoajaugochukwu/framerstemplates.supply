@@ -3,21 +3,21 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        default: 'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100',
-        secondary: 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700',
-        outline: 'border border-neutral-200 bg-transparent hover:bg-neutral-100 dark:border-neutral-800 dark:hover:bg-neutral-800',
-        ghost: 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
-        link: 'text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-100',
-        destructive: 'bg-red-500 text-white hover:bg-red-600',
+        default: 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-sm hover:shadow-md hover:brightness-110',
+        secondary: 'bg-accent-subtle text-foreground hover:bg-accent-subtle/80 border border-border-subtle',
+        outline: 'border border-border bg-transparent text-foreground hover:bg-accent-subtle/50 hover:border-accent/20',
+        ghost: 'text-muted hover:bg-accent-subtle/50 hover:text-foreground',
+        link: 'text-accent underline-offset-4 hover:underline',
+        destructive: 'bg-red-500 text-white hover:bg-red-600 shadow-sm',
       },
       size: {
-        default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-lg px-8',
+        default: 'h-10 px-5 py-2',
+        sm: 'h-9 rounded-lg px-3.5',
+        lg: 'h-12 rounded-xl px-8 text-base',
         icon: 'h-10 w-10',
       },
     },

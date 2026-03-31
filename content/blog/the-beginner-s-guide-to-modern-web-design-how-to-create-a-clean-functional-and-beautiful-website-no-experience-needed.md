@@ -3,9 +3,9 @@ title: The Beginner's Guide to Modern Web Design - How to Create Beautiful Websi
 slug: >-
   the-beginner-s-guide-to-modern-web-design-how-to-create-a-clean-functional-and-beautiful-website-no-experience-needed
 excerpt: >-
-  Your website is often your first handshake with the world. This beginner-friendly
-  guide covers modern design principles, 2025 trends, UI/UX basics, and the best
-  no-code tools for building your site.
+  Your website is often your first handshake with the world. This
+  beginner-friendly guide covers modern design principles, 2025 trends, UI/UX
+  basics, and the best no-code tools for building your site.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

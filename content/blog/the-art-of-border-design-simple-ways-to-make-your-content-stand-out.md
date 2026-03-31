@@ -2,9 +2,9 @@
 title: 'The Art of Border Design: Simple Ways to Make Your Content Stand Out'
 slug: the-art-of-border-design-simple-ways-to-make-your-content-stand-out
 excerpt: >-
-  Borders are one of the most underrated design elements, yet they have the power
-  to add structure, style, and emphasis to any content. This guide breaks down
-  border design step by step with practical tips.
+  Borders are one of the most underrated design elements, yet they have the
+  power to add structure, style, and emphasis to any content. This guide breaks
+  down border design step by step with practical tips.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

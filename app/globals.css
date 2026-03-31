@@ -2,18 +2,55 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #0f0f0f;
+  --accent: #6d28d9;
+  --accent-light: #8b5cf6;
+  --accent-subtle: #ede9fe;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --border: #e5e5e5;
+  --border-subtle: #f0f0f0;
+  --muted: #737373;
+  --muted-foreground: #a3a3a3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #09090b;
+    --foreground: #fafafa;
+    --accent: #8b5cf6;
+    --accent-light: #a78bfa;
+    --accent-subtle: #1e1b4b;
+    --surface: #0f0f12;
+    --surface-elevated: #18181b;
+    --border: #27272a;
+    --border-subtle: #1c1c1f;
+    --muted: #a1a1aa;
+    --muted-foreground: #71717a;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-plus-jakarta-sans);
   --font-mono: var(--font-geist-mono);
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.5s ease-out;
+  --animate-glow: glow 3s ease-in-out infinite;
 }
 
 @keyframes accordion-down {
@@ -38,15 +75,40 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-plus-jakarta-sans), sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--accent-subtle);
+  color: var(--accent);
 }

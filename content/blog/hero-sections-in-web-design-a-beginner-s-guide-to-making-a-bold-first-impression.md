@@ -6,8 +6,8 @@ slug: >-
   hero-sections-in-web-design-a-beginner-s-guide-to-making-a-bold-first-impression
 excerpt: >-
   When someone lands on your website, you only have a few seconds to grab their
-  attention. That first moment matters, and what they see right away is your hero
-  section. Learn how to design one that works.
+  attention. That first moment matters, and what they see right away is your
+  hero section. Learn how to design one that works.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

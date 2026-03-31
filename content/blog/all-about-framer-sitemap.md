@@ -3,8 +3,8 @@ title: 'Framer Sitemap: How to Find, Manage, and Submit Your Sitemap for SEO'
 slug: all-about-framer-sitemap
 excerpt: >-
   Framer simplifies SEO management by automatically generating a sitemap.xml
-  file for your website. Learn how to find, manage, and submit your sitemap
-  for better search engine indexing.
+  file for your website. Learn how to find, manage, and submit your sitemap for
+  better search engine indexing.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

@@ -2,9 +2,9 @@
 title: 10 Best Mobile App Landing Pages - Examples & Templates for 2025
 slug: 10-best-mobile-app-landing-pages-examples-templates-for-2025
 excerpt: >-
-  Discover the 10 best mobile app landing pages for 2025, featuring examples from
-  Apploosh, Cash App, FitnessAI, and more. Learn what makes each landing page
-  effective and find templates to inspire your own.
+  Discover the 10 best mobile app landing pages for 2025, featuring examples
+  from Apploosh, Cash App, FitnessAI, and more. Learn what makes each landing
+  page effective and find templates to inspire your own.
 author: Charles Ugo
 publishDate: '2025-02-01'
 status: published

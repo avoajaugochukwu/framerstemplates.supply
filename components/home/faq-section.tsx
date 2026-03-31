@@ -10,24 +10,29 @@ import { faqData } from '@/lib/data/faq'
 
 export function FAQSection() {
   return (
-    <section className="border-t border-neutral-200 bg-neutral-50 px-4 py-24 dark:border-neutral-800 dark:bg-neutral-900 sm:px-6 lg:px-8">
+    <section className="border-t border-border px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
-          Frequently Asked Questions
-        </h2>
+        <div className="text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            Got Questions? We Got You.
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            The short answers to what people ask before they remix their first template
+          </p>
+        </div>
         <div className="mt-12">
           <Accordion type="single" variant="bordered">
             {faqData.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger
                   value={`item-${index}`}
-                  className="px-4 text-neutral-900 dark:text-white"
+                  className="px-4 text-foreground"
                 >
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent
                   value={`item-${index}`}
-                  className="px-4 text-neutral-600 dark:text-neutral-400"
+                  className="px-4 text-muted"
                 >
                   {item.answer}
                 </AccordionContent>

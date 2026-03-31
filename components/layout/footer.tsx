@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { Mail, Check } from 'lucide-react'
 import { SITE_NAME } from '@/lib/constants'
 
 interface FooterColumn {
@@ -68,7 +69,6 @@ export function Footer({ siteName = SITE_NAME }: FooterProps) {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
-      // Fallback for older browsers
       const textArea = document.createElement('textarea')
       textArea.value = 'hello@framertemplates.supply'
       document.body.appendChild(textArea)
@@ -81,34 +81,33 @@ export function Footer({ siteName = SITE_NAME }: FooterProps) {
   }
 
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+    <footer className="border-t border-border bg-surface">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 text-lg font-bold text-neutral-900 dark:text-white">
-              <Image src="/logo.svg" alt={siteName} width={28} height={28} />
+            <Link href="/" className="flex items-center gap-2 text-lg font-bold text-foreground">
+              <Image src="/logo.svg" alt={siteName} width={24} height={24} />
               <span>{siteName}</span>
             </Link>
-            <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
-              Premium Framer templates and design tools to help you launch beautiful,
-              high-converting websites faster. Crafted with attention to detail and
-              optimized for performance.
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              Free Framer templates and design tools for founders, designers, and
+              anyone who wants to ship a polished site without starting from scratch.
             </p>
           </div>
 
           {columns.map((column) => (
             <div key={column.title}>
-              <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground">
                 {column.title}
               </h3>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-4 space-y-2.5">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.link}
                       target={link.newTab ? '_blank' : undefined}
                       rel={link.newTab ? 'noopener noreferrer' : undefined}
-                      className="text-sm text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                      className="text-sm text-muted transition-colors hover:text-accent"
                     >
                       {link.label}
                     </Link>
@@ -119,30 +118,38 @@ export function Footer({ siteName = SITE_NAME }: FooterProps) {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-neutral-200 pt-8 dark:border-neutral-800">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {new Date().getFullYear()} {siteName}. All rights reserved.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-600 dark:text-neutral-400">
-              <span>By Ugo Charles</span>
-              <span className="hidden sm:inline">|</span>
-              <a
-                href="https://www.framer.com/?via=charles"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-neutral-900 dark:hover:text-white"
-              >
-                Built with Framer
-              </a>
-              <span className="hidden sm:inline">|</span>
-              <button
-                onClick={handleCopyEmail}
-                className="transition-colors hover:text-neutral-900 dark:hover:text-white"
-              >
-                {copied ? 'Copied!' : 'Copy Email'}
-              </button>
-            </div>
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
+          <p className="text-sm text-muted-foreground">
+            {new Date().getFullYear()} {siteName}. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
+            <span>By Ugo Charles</span>
+            <span className="hidden h-3 w-px bg-border sm:inline-block" />
+            <a
+              href="https://www.framer.com/?via=charles"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-accent"
+            >
+              Built with Framer
+            </a>
+            <span className="hidden h-3 w-px bg-border sm:inline-block" />
+            <button
+              onClick={handleCopyEmail}
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-accent"
+            >
+              {copied ? (
+                <>
+                  <Check className="h-3.5 w-3.5 text-emerald-500" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Mail className="h-3.5 w-3.5" />
+                  Copy Email
+                </>
+              )}
+            </button>
           </div>
         </div>
       </div>
