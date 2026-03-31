@@ -21,7 +21,11 @@ interface TemplateCardProps {
 
 export function TemplateCard({ template }: TemplateCardProps) {
   const previewImage =
-    typeof template.previewImage === 'object' ? template.previewImage : null
+    typeof template.previewImage === 'object'
+      ? template.previewImage
+      : typeof template.previewImage === 'string'
+        ? { url: template.previewImage, alt: template.title }
+        : null
   const categories =
     template.categories?.filter((cat): cat is Category => typeof cat === 'object') || []
   const firstCategory = categories[0]

@@ -35,10 +35,10 @@ export default function TemplatesPage() {
                 className="group overflow-hidden rounded-xl border border-neutral-200 bg-white transition-all hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
               >
                 <div className="relative aspect-[16/10] bg-neutral-100 dark:bg-neutral-900">
-                  {typeof template.previewImage === 'object' && (template.previewImage as Media)?.url && (
+                  {(typeof template.previewImage === 'string' ? template.previewImage : (template.previewImage as Media)?.url) && (
                     <Image
-                      src={(template.previewImage as Media).url}
-                      alt={(template.previewImage as Media).alt || template.title}
+                      src={typeof template.previewImage === 'string' ? template.previewImage : (template.previewImage as Media).url}
+                      alt={typeof template.previewImage === 'object' ? ((template.previewImage as Media)?.alt || template.title) : template.title}
                       fill
                       className="object-cover"
                     />

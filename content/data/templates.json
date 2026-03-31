@@ -1,1 +1,571 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Citrico – Framer Template for Digital Marketing Agencies",
+    "slug": "citrico-framer-template-for-digital-marketing-agencies",
+    "description": "A vibrant, conversion-focused Framer template built for digital marketing agencies. Features bold design, CMS-powered blog, and strategic layouts to win clients.",
+    "tagline": "A bold Framer template for digital marketing agencies",
+    "previewImage": "/templates/citrico-preview.jpg",
+    "previewImages": [
+      { "image": "/templates/citrico-preview.jpg" },
+      { "image": "/templates/citrico-1.jpg" },
+      { "image": "/templates/citrico-2.jpg" },
+      { "image": "/templates/citrico-3.jpg" }
+    ],
+    "downloadLink": null,
+    "livePreviewLink": "https://citrico.framer.website/?via=charles",
+    "remixLink": null,
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$60/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "Bold, vibrant design with strong visual hierarchy" },
+      { "feature": "CMS-powered blog system" },
+      { "feature": "Fully responsive across all devices" },
+      { "feature": "SEO-optimized and accessible" },
+      { "feature": "No-code customization via Framer" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "Project" },
+      { "pageName": "Blog" },
+      { "pageName": "Contact" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Agency-Focused Design",
+        "description": "Purpose-built layouts for showcasing services, case studies, and team expertise."
+      },
+      {
+        "title": "CMS Blog",
+        "description": "Built-in content management for publishing articles and insights."
+      },
+      {
+        "title": "Conversion Optimized",
+        "description": "Strategic CTAs and layouts designed to convert visitors into leads."
+      }
+    ],
+    "categories": ["Agency"],
+    "status": "published",
+    "featured": true,
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Arvo – Modern SaaS Website Template",
+    "slug": "arvo-modern-saas-website-template-for-high-converting-startups",
+    "description": "A sleek, high-converting Framer template for SaaS startups. Clean, conversion-optimized template built for SaaS founders and product teams needing rapid deployment.",
+    "tagline": "A sleek, high-converting Framer template for SaaS startups",
+    "previewImage": "/templates/arvo-preview.jpg",
+    "previewImages": [
+      { "image": "/templates/arvo-preview.jpg" },
+      { "image": "/templates/arvo-1.jpg" },
+      { "image": "/templates/arvo-2.jpg" },
+      { "image": "/templates/arvo-3.jpg" }
+    ],
+    "downloadLink": null,
+    "livePreviewLink": "https://arvo-ai.framer.website/?via=charles",
+    "remixLink": "https://framer.com/remix/r065YSocgBCuL1ABjQy8",
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$60/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "Conversion-focused homepage with hero, features, testimonials, CTAs" },
+      { "feature": "Integrated CMS-powered blog system" },
+      { "feature": "Pre-built legal pages (Privacy Policy, 404)" },
+      { "feature": "Contact form with FAQ support" },
+      { "feature": "Modern minimalist aesthetic" },
+      { "feature": "Fully responsive design" },
+      { "feature": "SEO-optimized and accessible" },
+      { "feature": "Easy customization with native Framer components" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "Blog" },
+      { "pageName": "Privacy" },
+      { "pageName": "Contact" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Conversion-Optimized Design",
+        "description": "Strategic layout to convert visitors to users."
+      },
+      {
+        "title": "Blog CMS",
+        "description": "Manage SEO-friendly content easily."
+      },
+      {
+        "title": "Launch-Ready",
+        "description": "Deploy in approximately 5 minutes."
+      },
+      {
+        "title": "No-Code",
+        "description": "Drag-and-drop customization, zero coding required."
+      }
+    ],
+    "categories": ["SaaS"],
+    "status": "published",
+    "featured": false,
+    "createdAt": "2025-01-02T00:00:00.000Z",
+    "updatedAt": "2025-01-02T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Catalyst Concepts – Marketing Agency Framer Template",
+    "slug": "catalyst-concepts-marketing-agency-framer-template",
+    "description": "A bold, 6-page Framer template designed for creative studios and marketing agencies. Built to impress clients and win leads with strategic layouts and dynamic CMS sections.",
+    "tagline": "A bold, 6-page Framer template designed for creative studios and marketing agencies",
+    "previewImage": "/templates/catalyst-concepts-preview.jpg",
+    "previewImages": [
+      { "image": "/templates/catalyst-concepts-preview.jpg" },
+      { "image": "/templates/catalyst-concepts-1.jpg" },
+      { "image": "/templates/catalyst-concepts-2.jpg" },
+      { "image": "/templates/catalyst-concepts-3.jpg" }
+    ],
+    "downloadLink": null,
+    "livePreviewLink": "https://catalyst-concepts.framer.website/?via=charles",
+    "remixLink": "https://framer.com/remix/1Ic3u3y2MkxLh6i2j3fy",
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$60/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "CMS-driven projects and insights sections" },
+      { "feature": "Conversion-optimized layouts" },
+      { "feature": "Responsive design across all devices" },
+      { "feature": "Smooth transitions and scroll interactions" },
+      { "feature": "SEO-friendly and accessible build" },
+      { "feature": "Drag-and-drop customization (no coding required)" },
+      { "feature": "Animations and interactions support" },
+      { "feature": "Lifetime updates included" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "About" },
+      { "pageName": "Projects" },
+      { "pageName": "Blog" },
+      { "pageName": "Contact" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Strategy-Driven Design",
+        "description": "Purpose-built for agencies to showcase services, teams, and case studies."
+      },
+      {
+        "title": "Thought Leadership",
+        "description": "CMS capabilities for publishing articles and reports."
+      },
+      {
+        "title": "Trust-Focused Design",
+        "description": "Typography and whitespace optimized for credibility."
+      },
+      {
+        "title": "Performance",
+        "description": "Fast-loading with smooth interactions."
+      }
+    ],
+    "categories": ["Marketing Agency"],
+    "status": "published",
+    "featured": false,
+    "createdAt": "2025-01-03T00:00:00.000Z",
+    "updatedAt": "2025-01-03T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "BoldShift – Framer Template for Creative Agencies",
+    "slug": "boldshift-creative-design-for-impact-driven-brands",
+    "description": "An impactful five-page template for creative agencies, personal brands, and marketing teams. Features striking visuals, smooth interactions, and flexible layouts to convert visitors into clients.",
+    "tagline": "An impactful five-page template for creative agencies, personal brands, and marketing teams",
+    "previewImage": "/templates/boldshift-preview.jpg",
+    "previewImages": [
+      { "image": "/templates/boldshift-preview.jpg" },
+      { "image": "/templates/boldshift-1.jpg" },
+      { "image": "/templates/boldshift-2.jpg" },
+      { "image": "/templates/boldshift-3.jpg" },
+      { "image": "/templates/boldshift-4.jpg" }
+    ],
+    "downloadLink": null,
+    "livePreviewLink": "https://boldshift.framer.website/?via=charles",
+    "remixLink": "https://framer.com/remix/nwwsbqp1F0hsH4psbJTT",
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$60/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "Bold, minimal design with strong visual hierarchy" },
+      { "feature": "Book a Call CTA buttons with Calendly integration" },
+      { "feature": "CMS for portfolio projects" },
+      { "feature": "Fully responsive across devices" },
+      { "feature": "No-code customization via Framer" },
+      { "feature": "SEO and speed optimization" },
+      { "feature": "Smooth animations and interactions" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "About" },
+      { "pageName": "Services" },
+      { "pageName": "Contact" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Bold, Minimal Design",
+        "description": "Clean aesthetic helping brands stand out."
+      },
+      {
+        "title": "Book a Call CTA",
+        "description": "Integrated scheduling for client conversions."
+      },
+      {
+        "title": "CMS for Portfolio Projects",
+        "description": "Dynamic showcase management."
+      },
+      {
+        "title": "Fully Responsive",
+        "description": "Optimized for all device sizes."
+      }
+    ],
+    "categories": ["Creative Design"],
+    "status": "published",
+    "featured": false,
+    "createdAt": "2025-01-04T00:00:00.000Z",
+    "updatedAt": "2025-01-04T00:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "Nexora – Framer Template for Data-Driven Creative Brands",
+    "slug": "nexora-fueling-brands-with-data-creativity",
+    "description": "A high-converting website built for modern marketing, branding, and creative agencies. Showcase portfolio work with smooth animations and built-in CMS functionality.",
+    "tagline": "A high-converting website built for modern marketing, branding, and creative agencies",
+    "previewImage": "/templates/nexora-preview.png",
+    "previewImages": [
+      { "image": "/templates/nexora-preview.png" },
+      { "image": "/templates/nexora-1.jpg" },
+      { "image": "/templates/nexora-2.jpg" },
+      { "image": "/templates/nexora-3.jpg" },
+      { "image": "/templates/nexora-4.jpg" }
+    ],
+    "downloadLink": null,
+    "livePreviewLink": "https://nexora-digital.framer.website/?via=charles",
+    "remixLink": "https://framer.com/remix/fVGrkZrX5C2AGZJ2eEcS",
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$60/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "Modern, bold design with striking visual hierarchy" },
+      { "feature": "Integrated Book a Call button linked to Calendly" },
+      { "feature": "Fully responsive across all devices" },
+      { "feature": "No-code editing capability" },
+      { "feature": "Fast-loading and SEO-optimized" },
+      { "feature": "Conversion-focused design with clear CTAs" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "Works" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Bold Design",
+        "description": "Minimal aesthetic helping brands stand out."
+      },
+      {
+        "title": "Streamlined Structure",
+        "description": "Essential pages without clutter."
+      },
+      {
+        "title": "Client Acquisition",
+        "description": "Direct Calendly integration for booking calls."
+      },
+      {
+        "title": "Conversion-Driven",
+        "description": "Visual storytelling with intuitive navigation."
+      }
+    ],
+    "categories": ["Creative Design"],
+    "status": "published",
+    "featured": false,
+    "createdAt": "2025-01-05T00:00:00.000Z",
+    "updatedAt": "2025-01-05T00:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "title": "Ochoo – Artist Portfolio Framer Template",
+    "slug": "ochoo-artist-portfolio-framer-template",
+    "description": "A minimalist, gallery-focused Framer template for contemporary artists. Emphasizes visual clarity without distractions, allowing painters and digital artists to build polished online portfolios.",
+    "tagline": "One-page website for painters, visual artists, and modern creative portfolios",
+    "previewImage": "/templates/ochoo-preview.jpg",
+    "previewImages": [
+      { "image": "/templates/ochoo-1.jpg" },
+      { "image": "/templates/ochoo-2.jpg" },
+      { "image": "/templates/ochoo-3.jpg" },
+      { "image": "/templates/ochoo-4.jpg" }
+    ],
+    "downloadLink": "https://framer.link/x24pBvn",
+    "livePreviewLink": "https://ochoo.framer.website/?via=charles",
+    "remixLink": null,
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$180/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "Art-focused layout with minimalist structure" },
+      { "feature": "Customizable Gallery & CV Section" },
+      { "feature": "Lightbox view for full-screen artwork exploration" },
+      { "feature": "Responsive design across all devices" },
+      { "feature": "SEO-optimized implementation" },
+      { "feature": "No-code customization via drag-and-drop editor" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Visually Immersive Design",
+        "description": "Visually balanced, minimalist structure tailored to elevate your artwork."
+      },
+      {
+        "title": "Built for Creatives",
+        "description": "Designed specifically for visual artists seeking personal yet professional presence."
+      },
+      {
+        "title": "Seamless Deployment",
+        "description": "Quick setup enabling artists to launch gallery-ready sites rapidly."
+      }
+    ],
+    "categories": ["Portfolio"],
+    "status": "published",
+    "featured": false,
+    "createdAt": "2025-01-06T00:00:00.000Z",
+    "updatedAt": "2025-01-06T00:00:00.000Z"
+  },
+  {
+    "id": 7,
+    "title": "Striver – Modern Agency & Portfolio Template",
+    "slug": "striver-modern-agency-portfolio-framer-template",
+    "description": "A high-quality Framer template for creative agencies, design studios, and freelancers. Clean design with user-friendly interface for presenting portfolios and services.",
+    "tagline": "One-page website for creative agencies and freelancers to showcase their work effectively",
+    "previewImage": "/templates/striver-preview.jpg",
+    "previewImages": [
+      { "image": "/templates/striver-1.jpg" },
+      { "image": "/templates/striver-2.jpg" },
+      { "image": "/templates/striver-3.jpg" },
+      { "image": "/templates/striver-4.jpg" }
+    ],
+    "downloadLink": "https://framer.link/mFxy2La",
+    "livePreviewLink": "https://striver.framer.website/?via=charles",
+    "remixLink": null,
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$60/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "Multiple homepage layout variations" },
+      { "feature": "Fully responsive design across all devices" },
+      { "feature": "SEO optimization with best practices" },
+      { "feature": "No-code customization via drag-and-drop editor" },
+      { "feature": "Interactive elements with animations and smooth transitions" },
+      { "feature": "Lifetime updates included" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Fast Deployment",
+        "description": "Deploy in 5 minutes."
+      },
+      {
+        "title": "No Coding Required",
+        "description": "Intuitive no-code design environment."
+      },
+      {
+        "title": "Professional Results",
+        "description": "Creates lasting impressions on potential clients."
+      }
+    ],
+    "categories": ["Portfolio"],
+    "status": "published",
+    "featured": false,
+    "createdAt": "2025-01-07T00:00:00.000Z",
+    "updatedAt": "2025-01-07T00:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "title": "Loosh – Mobile App Landing Page Framer Template",
+    "slug": "loosh-mobile-app-landing-page-framer-template",
+    "description": "A professionally designed Framer template for showcasing mobile apps with a focus on conversions. Targets startups, SaaS founders, and app developers seeking a modern, high-performance website.",
+    "tagline": "One page website for mobile app landing page",
+    "previewImage": "/templates/loosh-preview.png",
+    "previewImages": [
+      { "image": "/templates/loosh-1.jpg" },
+      { "image": "/templates/loosh-2.jpg" },
+      { "image": "/templates/loosh-3.jpg" },
+      { "image": "/templates/loosh-4.jpg" }
+    ],
+    "downloadLink": "https://framer.link/3KAJAxL",
+    "livePreviewLink": "https://loosh.framer.website/?via=charles",
+    "remixLink": null,
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$60/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "Lightning-fast loading and SEO optimization" },
+      { "feature": "App-centric design with stunning UI" },
+      { "feature": "Fully customizable with Framer's no-code tools" },
+      { "feature": "Conversion-driven layout with hero sections, testimonials, FAQs, and CTAs" },
+      { "feature": "Mobile-responsive across all devices" },
+      { "feature": "Supports animations and interactions" },
+      { "feature": "Lifetime updates included" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Lightning-Fast & SEO-Optimized",
+        "description": "Built with Framer SEO best practices."
+      },
+      {
+        "title": "App-Centric Design",
+        "description": "Tailored UI for mobile app promotion."
+      },
+      {
+        "title": "Easy Customization",
+        "description": "No-code editing with drag-and-drop tools."
+      },
+      {
+        "title": "Conversion-Driven Layout",
+        "description": "Designed to increase sign-ups and downloads."
+      }
+    ],
+    "categories": ["SaaS"],
+    "status": "published",
+    "featured": false,
+    "createdAt": "2025-01-08T00:00:00.000Z",
+    "updatedAt": "2025-01-08T00:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "title": "SaaSScale – SaaS Landing Page Framer Template",
+    "slug": "saasscale-saas-landing-page-framer-template",
+    "description": "A professionally designed Framer template for SaaS startups and tech companies to build high-converting landing pages. Emphasizes fast performance, SEO optimization, and modern design.",
+    "tagline": "One-page website for SaaS startups and software companies",
+    "previewImage": "/templates/saasscale-preview.jpg",
+    "previewImages": [
+      { "image": "/templates/saasscale-preview.jpg" },
+      { "image": "/templates/saasscale-1.jpg" },
+      { "image": "/templates/saasscale-2.jpg" },
+      { "image": "/templates/saasscale-3.jpg" },
+      { "image": "/templates/saasscale-4.jpg" }
+    ],
+    "downloadLink": null,
+    "livePreviewLink": "https://saasscale.framer.website/?via=charles",
+    "remixLink": "https://framer.com/projects/new?duplicate=Nxbk7U3MMBMTeheMMULG&via=charles",
+    "customizationLink": "https://cal.com/uix-charles/15min",
+    "hostingInfo": {
+      "hostingCost": "$60/year",
+      "deployTime": "5 minutes"
+    },
+    "price": {
+      "amount": 0,
+      "currency": "USD",
+      "isFree": true
+    },
+    "features": [
+      { "feature": "Lightning-fast performance with SEO best practices" },
+      { "feature": "SaaS-focused, clean modern UI design" },
+      { "feature": "No-code customization via drag-and-drop editor" },
+      { "feature": "Conversion-optimized layout with CTAs" },
+      { "feature": "Mobile-responsive across all devices" },
+      { "feature": "Animations and interactive elements" },
+      { "feature": "Lifetime updates included" }
+    ],
+    "pages": [
+      { "pageName": "Home" },
+      { "pageName": "404" }
+    ],
+    "sellingPoints": [
+      {
+        "title": "Lightning-Fast & SEO-Optimized",
+        "description": "Built for improved search rankings and visibility."
+      },
+      {
+        "title": "SaaS-Centric Design",
+        "description": "Clean UI specifically for SaaS product presentation."
+      },
+      {
+        "title": "Easy Customization",
+        "description": "Fully editable with no coding required."
+      },
+      {
+        "title": "Conversion-Driven Layout",
+        "description": "Engagement-focused sections designed to increase sign-ups."
+      }
+    ],
+    "categories": ["SaaS"],
+    "status": "published",
+    "featured": false,
+    "createdAt": "2025-01-09T00:00:00.000Z",
+    "updatedAt": "2025-01-09T00:00:00.000Z"
+  }
+]

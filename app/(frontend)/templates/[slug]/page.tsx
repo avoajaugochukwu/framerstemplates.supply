@@ -55,10 +55,10 @@ export default async function TemplatePage({ params }: Props) {
           {/* Preview Area */}
           <div>
             <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900">
-              {typeof template.previewImage === 'object' && template.previewImage?.url && (
+              {(typeof template.previewImage === 'string' ? template.previewImage : (template.previewImage as any)?.url) && (
                 <Image
-                  src={template.previewImage.url}
-                  alt={template.previewImage.alt || template.title}
+                  src={typeof template.previewImage === 'string' ? template.previewImage : (template.previewImage as any).url}
+                  alt={typeof template.previewImage === 'object' ? ((template.previewImage as any)?.alt || template.title) : template.title}
                   fill
                   className="object-cover"
                 />
@@ -72,10 +72,10 @@ export default async function TemplatePage({ params }: Props) {
                     key={i}
                     className="relative aspect-[16/10] overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900"
                   >
-                    {typeof item.image === 'object' && item.image?.url && (
+                    {(typeof item.image === 'string' ? item.image : (item.image as any)?.url) && (
                       <Image
-                        src={item.image.url}
-                        alt={item.image.alt || item.caption || `Preview ${i + 1}`}
+                        src={typeof item.image === 'string' ? item.image : (item.image as any).url}
+                        alt={typeof item.image === 'object' ? ((item.image as any)?.alt || item.caption || `Preview ${i + 1}`) : (item.caption || `Preview ${i + 1}`)}
                         fill
                         className="object-cover"
                       />
@@ -86,11 +86,12 @@ export default async function TemplatePage({ params }: Props) {
             )}
 
             {/* Long Description */}
-            {template.longDescription && (
+            {typeof template.longDescription === 'string' && template.longDescription && (
               <div className="mt-10">
-                <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-neutral-900 prose-a:underline dark:prose-a:text-white">
-                  {/* Rich text content would need a different renderer without Payload */}
-                </div>
+                <div
+                  className="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-neutral-900 prose-a:underline dark:prose-a:text-white"
+                  dangerouslySetInnerHTML={{ __html: template.longDescription }}
+                />
               </div>
             )}
           </div>
