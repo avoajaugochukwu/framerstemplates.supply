@@ -10,7 +10,6 @@ import { SITE_NAME } from './lib/constants'
 import {
   Users,
   Media,
-  Blog,
   Categories,
   Templates,
   Gradients,
@@ -35,7 +34,6 @@ export default buildConfig({
   collections: [
     Users,
     Media,
-    Blog,
     Categories,
     Templates,
     Gradients,

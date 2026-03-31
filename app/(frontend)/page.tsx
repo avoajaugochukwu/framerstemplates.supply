@@ -1,5 +1,6 @@
 import { getPayloadClient } from '@/lib/payload'
 import { Hero, TemplateGrid, BlogSection, FAQSection } from '@/components/home'
+import { getAllPosts } from '@/lib/blog'
 import type { Category, Media } from '@/lib/types'
 
 async function getTemplates() {
@@ -32,30 +33,16 @@ async function getCategories() {
   }
 }
 
-async function getLatestPosts() {
-  try {
-    const payload = await getPayloadClient()
-    const posts = await payload.find({
-      collection: 'blog',
-      where: {
-        status: { equals: 'published' },
-      },
-      limit: 3,
-      sort: '-publishedDate',
-      depth: 2,
-    })
-    return posts.docs
-  } catch {
-    return []
-  }
+function getLatestPosts() {
+  return getAllPosts().slice(0, 3)
 }
 
 export default async function HomePage() {
-  const [templates, categories, posts] = await Promise.all([
+  const [templates, categories] = await Promise.all([
     getTemplates(),
     getCategories(),
-    getLatestPosts(),
   ])
+  const posts = getLatestPosts()
 
   const formattedTemplates = templates.map((template) => ({
     id: String(template.id),
@@ -68,11 +55,10 @@ export default async function HomePage() {
   }))
 
   const formattedPosts = posts.map((post) => ({
-    id: String(post.id),
+    id: post.slug,
     title: post.title,
     slug: post.slug,
-    featuredImage: post.featuredImage as Media | string | null,
-    categories: post.categories as (Category | string)[] | null,
+    featuredImage: post.featuredImage || null,
   }))
 
   return (

@@ -1,12 +1,10 @@
 import { BlogCard } from '@/components/shared'
-import type { Media, Category } from '@/lib/types'
 
 interface Post {
   id: string
   title: string
   slug: string
-  featuredImage?: Media | string | null
-  categories?: (Category | string)[] | null
+  featuredImage?: string | null
 }
 
 interface BlogSectionProps {

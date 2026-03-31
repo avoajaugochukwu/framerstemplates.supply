@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getPayloadClient } from '@/lib/payload'
+import { getAllPosts } from '@/lib/blog'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://framertemplates.supply'
 
@@ -43,17 +44,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
+  // Blog pages from local files
+  const posts = getAllPosts()
+  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.publishDate),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
   try {
     const payload = await getPayloadClient()
 
-    const [templates, posts, tools] = await Promise.all([
+    const [templates, tools] = await Promise.all([
       payload.find({
         collection: 'templates',
-        where: { status: { equals: 'published' } },
-        limit: 1000,
-      }),
-      payload.find({
-        collection: 'blog',
         where: { status: { equals: 'published' } },
         limit: 1000,
       }),
@@ -71,13 +76,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }))
 
-    const blogPages: MetadataRoute.Sitemap = posts.docs.map((post) => ({
-      url: `${siteUrl}/blog/${post.slug}`,
-      lastModified: post.updatedAt ? new Date(post.updatedAt as string) : new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
-
     const toolPages: MetadataRoute.Sitemap = tools.docs.map((tool) => ({
       url: `${siteUrl}/tools/${tool.slug}`,
       lastModified: tool.updatedAt ? new Date(tool.updatedAt as string) : new Date(),
@@ -87,8 +85,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return [...staticPages, ...templatePages, ...blogPages, ...toolPages]
   } catch {
-    // Database unavailable at build time - return only static pages
-    console.warn('sitemap: Database unavailable, returning static pages only')
-    return staticPages
+    console.warn('sitemap: Database unavailable, returning static + blog pages only')
+    return [...staticPages, ...blogPages]
   }
 }

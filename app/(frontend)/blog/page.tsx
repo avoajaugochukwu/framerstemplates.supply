@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { getPayloadClient } from '@/lib/payload'
+import { getAllPosts } from '@/lib/blog'
 import { SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -9,24 +9,8 @@ export const metadata: Metadata = {
   description: 'Tips, tutorials, and insights on design, development, and building modern websites.',
 }
 
-export const revalidate = 3600
-
-async function getBlogPosts() {
-  const payload = await getPayloadClient()
-  const posts = await payload.find({
-    collection: 'blog',
-    where: {
-      status: { equals: 'published' },
-    },
-    sort: '-publishedDate',
-    limit: 100,
-    depth: 1,
-  })
-  return posts.docs
-}
-
-export default async function BlogPage() {
-  const posts = await getBlogPosts()
+export default function BlogPage() {
+  const posts = getAllPosts()
 
   return (
     <div className="px-4 py-16 sm:px-6 lg:px-8">
@@ -44,17 +28,17 @@ export default async function BlogPage() {
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <Link
-                key={post.id}
+                key={post.slug}
                 href={`/blog/${post.slug}`}
                 className="group overflow-hidden rounded-xl border border-neutral-200 bg-white transition-all hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
               >
                 <div className="relative aspect-[16/9] bg-neutral-100 dark:bg-neutral-900">
-                  {typeof post.featuredImage === 'object' && post.featuredImage?.url && (
+                  {post.featuredImage && (
                     <Image
-                      src={post.featuredImage.url}
-                      alt={post.featuredImage.alt || post.title}
+                      src={post.featuredImage}
+                      alt={`Featured image for ${post.title}`}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   )}
@@ -68,9 +52,9 @@ export default async function BlogPage() {
                       {post.excerpt}
                     </p>
                   )}
-                  {post.publishedDate && (
+                  {post.publishDate && (
                     <p className="mt-4 text-sm text-neutral-500 dark:text-neutral-500">
-                      {new Date(post.publishedDate).toLocaleDateString('en-US', {
+                      {new Date(post.publishDate).toLocaleDateString('en-US', {
                         month: 'long',
                         day: 'numeric',
                         year: 'numeric',
