@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "skills": {
+    "blog-post": {
+      "source": "langchain-ai/deepagents",
+      "sourceType": "github",
+      "computedHash": "4a695b9be73d15798cf887a5c55732a8247e4926d2ce3d844c97ae57c44bb3f2"
+    },
+    "copywriting": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "2e83eda2221e97166172a0798e9b0379e34080595e107e2fc0cf580e9b3bbf7b"
+    },
+    "topical-authority-mapper": {
+      "source": "athina-ai/goose-skills",
+      "sourceType": "github",
+      "computedHash": "69e8b07dcd31b5812ab7199e0341e4e33b9b55505f78aef769e9c1ca0429cde5"
+    }
+  }
+}

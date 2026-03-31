@@ -54,4 +54,4 @@ When you're happy with the result, hit publish. Framer handles hosting, SSL, and
 
 ## Next Steps
 
-Browse our [template collection](/templates) to find the perfect starting point for your next project.
+Browse our [template collection](/templates) to find the perfect starting point for your next project. You can also check out our [free Framer templates](/blog/free-framer-templates-to-build-high-converting-websites), explore the [best Framer portfolio templates](/blog/best-framer-portfolio-templates-for-designers-and-developers-in-2025), or learn [how to create a stunning Framer portfolio](/blog/framer-portfolio-guide).

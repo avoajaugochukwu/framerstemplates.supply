@@ -69,7 +69,6 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    blog: Blog;
     categories: Category;
     templates: Template;
     gradients: Gradient;
@@ -84,7 +83,6 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    blog: BlogSelect<false> | BlogSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     templates: TemplatesSelect<false> | TemplatesSelect<true>;
     gradients: GradientsSelect<false> | GradientsSelect<true>;
@@ -212,45 +210,6 @@ export interface Media {
       filename?: string | null;
     };
   };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "blog".
- */
-export interface Blog {
-  id: number;
-  title: string;
-  slug: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Brief summary for listings and SEO
-   */
-  excerpt?: string | null;
-  featuredImage?: (number | null) | Media;
-  author: number | User;
-  categories?: (number | Category)[] | null;
-  status: 'draft' | 'published' | 'archived';
-  publishedDate?: string | null;
-  /**
-   * SEO meta description (max 160 characters)
-   */
-  metaDescription?: string | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -539,10 +498,6 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'blog';
-        value: number | Blog;
-      } | null)
-    | ({
         relationTo: 'categories';
         value: number | Category;
       } | null)
@@ -685,24 +640,6 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "blog_select".
- */
-export interface BlogSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  content?: T;
-  excerpt?: T;
-  featuredImage?: T;
-  author?: T;
-  categories?: T;
-  status?: T;
-  publishedDate?: T;
-  metaDescription?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

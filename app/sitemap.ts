@@ -37,6 +37,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
+      url: `${siteUrl}/colors`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/gradients`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${siteUrl}/support`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -56,7 +68,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const payload = await getPayloadClient()
 
-    const [templates, tools] = await Promise.all([
+    const [templates, tools, colors, gradients] = await Promise.all([
       payload.find({
         collection: 'templates',
         where: { status: { equals: 'published' } },
@@ -66,6 +78,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         collection: 'tools',
         where: { status: { equals: 'active' } },
         limit: 100,
+      }),
+      payload.find({
+        collection: 'colors',
+        limit: 1000,
+      }),
+      payload.find({
+        collection: 'gradients',
+        limit: 1000,
       }),
     ])
 
@@ -83,7 +103,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }))
 
-    return [...staticPages, ...templatePages, ...blogPages, ...toolPages]
+    const colorPages: MetadataRoute.Sitemap = colors.docs.map((color) => ({
+      url: `${siteUrl}/colors/${color.slug}`,
+      lastModified: color.updatedAt ? new Date(color.updatedAt as string) : new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
+
+    const gradientPages: MetadataRoute.Sitemap = gradients.docs.map((gradient) => ({
+      url: `${siteUrl}/gradients/${gradient.slug}`,
+      lastModified: gradient.updatedAt ? new Date(gradient.updatedAt as string) : new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
+
+    return [...staticPages, ...templatePages, ...blogPages, ...toolPages, ...colorPages, ...gradientPages]
   } catch {
     console.warn('sitemap: Database unavailable, returning static + blog pages only')
     return [...staticPages, ...blogPages]
